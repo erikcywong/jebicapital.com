@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start a Project — JEBI CAPITAL</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container start-page">
+    <div class="start-header">
+      <h1 data-i18n="start.title">Start Your Zero-Carbon Coffee Project</h1>
+      <p data-i18n="start.subtitle">Join a community of creators building the future of sustainable coffee. Get funding, carbon verification, and global reach.</p>
+    </div>
+
+    <div class="start-steps">
+      <div class="start-step active" id="step-indicator-1">
+        <span class="step-num">1</span>
+        <span data-i18n="start.step1">Project Basics</span>
+      </div>
+      <div class="start-step-line"></div>
+      <div class="start-step" id="step-indicator-2">
+        <span class="step-num">2</span>
+        <span data-i18n="start.step2">Funding & Carbon</span>
+      </div>
+      <div class="start-step-line"></div>
+      <div class="start-step" id="step-indicator-3">
+        <span class="step-num">3</span>
+        <span data-i18n="start.step3">Rewards & Tiers</span>
+      </div>
+      <div class="start-step-line"></div>
+      <div class="start-step" id="step-indicator-4">
+        <span class="step-num">4</span>
+        <span data-i18n="start.step4">Review & Submit</span>
+      </div>
+    </div>
+
+    <form class="start-form" id="startForm" onsubmit="event.preventDefault(); submitForm();">
+
+      <!-- Step 1: Project Basics -->
+      <div class="form-step active" id="form-step-1">
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="start.projectName">Project Name</span> <span class="req">*</span></label>
+          <input type="text" class="form-input" name="projectName" data-i18n-attr="placeholder:start.projectNamePlaceholder" required>
+          <div class="form-error" data-i18n="start.requiredField">This field is required</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="start.category">Project Category</span> <span class="req">*</span></label>
+          <select class="form-select" name="category" required>
+            <option value="" data-i18n="start.selectCategory">Select a category</option>
+            <option value="aeroponic" data-i18n="cat.aeroponic">Aeroponic Cultivation</option>
+            <option value="processing" data-i18n="cat.processing">Processing & Milling</option>
+            <option value="roasting" data-i18n="cat.roasting">Roasting & Packaging</option>
+            <option value="distribution" data-i18n="cat.distribution">Distribution & Logistics</option>
+            <option value="cafe" data-i18n="cat.cafe">Café & Retail</option>
+            <option value="carbon" data-i18n="cat.carbon">Carbon Credits</option>
+            <option value="financial" data-i18n="cat.financial">Financial Products</option>
+            <option value="technology" data-i18n="cat.technology">Technology & Innovation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="start.shortDescription">Short Description</span> <span class="req">*</span></label>
+          <input type="text" class="form-input" name="shortDescription" data-i18n-attr="placeholder:start.shortDescriptionPlaceholder" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="start.fullDescription">Full Description</span> <span class="req">*</span></label>
+          <textarea class="form-textarea" name="fullDescription" rows="6" data-i18n-attr="placeholder:start.fullDescriptionPlaceholder" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="start.location">Project Location</span> <span class="req">*</span></label>
+          <input type="text" class="form-input" name="location" data-i18n-attr="placeholder:start.locationPlaceholder" required>
+        </div>
+
+        <div class="form-nav">
+          <span></span>
+          <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)" data-i18n="start.next">Next Step</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Funding & Carbon -->
+      <div class="form-step" id="form-step-2">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"><span data-i18n="start.fundingGoal">Funding Goal (USD)</span> <span class="req">*</span></label>
+            <input type="number" class="form-input" name="fundingGoal" data-i18n-attr="placeholder:start.fundingGoalPlaceholder" min="1000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><span data-i18n="start.duration">Campaign Duration (days)</span> <span class="req">*</span></label>
+            <input type="number" class="form-input" name="duration" min="7" max="90" value="30" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"><span data-i18n="start.carbonReduction">Estimated Carbon Reduction (tons CO₂/yr)</span> <span class="req">*</span></label>
+            <input type="number" class="form-input" name="carbonReduction" data-i18n-attr="placeholder:start.carbonReductionPlaceholder" min="0" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><span data-i18n="start.verificationProvider">Verification Provider</span></label>
+            <select class="form-select" name="verificationProvider">
+              <option value="">—</option>
+              <option value="verra">Verra (VCS)</option>
+              <option value="gold-standard">Gold Standard</option>
+              <option value="scs-global">SCS Global</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="start.carbonMethod">Carbon Reduction Method</span> <span class="req">*</span></label>
+          <textarea class="form-textarea" name="carbonMethod" rows="3" data-i18n-attr="placeholder:start.carbonMethodPlaceholder" required></textarea>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn btn-outline" onclick="nextStep(2, 1)" data-i18n="start.previous">Previous</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)" data-i18n="start.next">Next Step</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Rewards -->
+      <div class="form-step" id="form-step-3">
+        <div id="rewardsContainer">
+          <div class="reward-form-row" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px;">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><span data-i18n="start.rewardName">Reward Name</span></label>
+                <input type="text" class="form-input" name="rewardName[]" data-i18n-attr="placeholder:start.rewardNamePlaceholder">
+              </div>
+              <div class="form-group">
+                <label class="form-label"><span data-i18n="start.rewardAmount">Pledge Amount (USD)</span></label>
+                <input type="number" class="form-input" name="rewardAmount[]" min="1">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label"><span data-i18n="start.rewardDescription">Reward Description</span></label>
+              <textarea class="form-textarea" name="rewardDesc[]" rows="2" data-i18n-attr="placeholder:start.rewardDescriptionPlaceholder"></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label"><span data-i18n="start.rewardLimit">Quantity Limit (optional)</span></label>
+              <input type="number" class="form-input" name="rewardLimit[]" min="1" style="max-width:200px;">
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-outline" style="margin-bottom:24px;" onclick="addReward()" data-i18n="start.addReward">Add Another Reward</button>
+
+        <div class="form-nav">
+          <button type="button" class="btn btn-outline" onclick="nextStep(3, 2)" data-i18n="start.previous">Previous</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(3, 4)" data-i18n="start.next">Next Step</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Review -->
+      <div class="form-step" id="form-step-4">
+        <div class="text-center mb-32">
+          <h2 style="font-size:24px;font-weight:700;" data-i18n="start.reviewTitle">Review Your Project</h2>
+          <p style="color:var(--text-2);margin-top:6px;" data-i18n="start.reviewSubtitle">Please review all details before submitting. You cannot edit after submission.</p>
+        </div>
+
+        <div class="review-box" id="reviewBox">
+          <!-- Populated by JS -->
+        </div>
+
+        <div id="submitSuccess" class="hidden" style="text-align:center;padding:40px;background:var(--bg-card);border:1px solid var(--green);border-radius:var(--radius);">
+          <div style="font-size:48px;margin-bottom:12px;">✅</div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--green);margin-bottom:8px;" data-i18n="start.submitSuccess">Project submitted successfully!</h3>
+          <p style="color:var(--text-2);">We'll review within 3–5 business days.</p>
+        </div>
+
+        <div class="form-nav" id="reviewNav">
+          <button type="button" class="btn btn-outline" onclick="nextStep(4, 3)" data-i18n="start.previous">Previous</button>
+          <button type="submit" class="btn btn-primary" data-i18n="start.submit">Submit for Review</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    initShared({ isIndex: false });
+
+    let currentStep = 1;
+
+    function nextStep(from, to) {
+      // Basic validation for step 1
+      if (from === 1) {
+        const required = ['projectName', 'category', 'shortDescription', 'fullDescription', 'location'];
+        let valid = true;
+        required.forEach(name => {
+          const input = document.querySelector(`[name="${name}"]`);
+          if (input && !input.value.trim()) {
+            valid = false;
+            input.style.borderColor = 'var(--red)';
+          } else if (input) {
+            input.style.borderColor = '';
+          }
+        });
+        if (!valid) return;
+      }
+
+      // Switch steps
+      document.getElementById('form-step-' + from).classList.remove('active');
+      document.getElementById('form-step-' + to).classList.add('active');
+
+      // Update indicators
+      for (let i = 1; i <= 4; i++) {
+        const ind = document.getElementById('step-indicator-' + i);
+        ind.classList.remove('active', 'done');
+        if (i < to) ind.classList.add('done');
+        else if (i === to) ind.classList.add('active');
+      }
+
+      currentStep = to;
+
+      // If step 4, populate review
+      if (to === 4) populateReview();
+    }
+
+    function addReward() {
+      const container = document.getElementById('rewardsContainer');
+      const newRow = container.querySelector('.reward-form-row').cloneNode(true);
+      newRow.querySelectorAll('input, textarea').forEach(el => el.value = '');
+      container.appendChild(newRow);
+    }
+
+    function populateReview() {
+      const form = document.getElementById('startForm');
+      const fd = new FormData(form);
+      const catName = fd.get('category') ? t('cat.' + fd.get('category')) : '—';
+
+      document.getElementById('reviewBox').innerHTML = `
+        <h3 data-i18n="start.step1">Project Basics</h3>
+        <div class="review-row"><span class="label" data-i18n="start.projectName">Project Name</span><span class="val">${fd.get('projectName') || '—'}</span></div>
+        <div class="review-row"><span class="label" data-i18n="start.category">Project Category</span><span class="val">${catName}</span></div>
+        <div class="review-row"><span class="label" data-i18n="start.location">Project Location</span><span class="val">${fd.get('location') || '—'}</span></div>
+        <div class="review-row"><span class="label" data-i18n="start.shortDescription">Short Description</span><span class="val">${fd.get('shortDescription') || '—'}</span></div>
+
+        <h3 style="margin-top:20px;" data-i18n="start.step2">Funding & Carbon</h3>
+        <div class="review-row"><span class="label" data-i18n="start.fundingGoal">Funding Goal</span><span class="val">${formatCurrency(fd.get('fundingGoal') || 0)}</span></div>
+        <div class="review-row"><span class="label" data-i18n="start.duration">Campaign Duration</span><span class="val">${fd.get('duration') || '—'} days</span></div>
+        <div class="review-row"><span class="label" data-i18n="start.carbonReduction">Carbon Reduction</span><span class="val">${fd.get('carbonReduction') || '—'} ${t('project.carbonTargetVal')}</span></div>
+        <div class="review-row"><span class="label" data-i18n="start.verificationProvider">Verification Provider</span><span class="val">${fd.get('verificationProvider') || '—'}</span></div>
+      `;
+    }
+
+    function submitForm() {
+      document.getElementById('reviewBox').classList.add('hidden');
+      document.getElementById('reviewNav').classList.add('hidden');
+      document.getElementById('submitSuccess').classList.remove('hidden');
+    }
+
+    applyI18n(getLang());
+  </script>
+</body>
+</html>

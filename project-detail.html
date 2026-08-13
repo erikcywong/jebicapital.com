@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Detail — JEBI CAPITAL</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container detail-page" id="detailPage">
+    <!-- Populated by JS -->
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    initShared({ isIndex: false });
+
+    function getProjectId() {
+      return new URLSearchParams(window.location.search).get('id');
+    }
+
+    function renderDetail() {
+      const id = getProjectId();
+      const p = getProjectById(id);
+
+      if (!p) {
+        document.getElementById('detailPage').innerHTML = `
+          <div style="text-align:center;padding:120px 0;">
+            <h1 style="font-size:32px;font-weight:800;margin-bottom:12px;">404</h1>
+            <p style="color:var(--text-2);margin-bottom:24px;">Project not found.</p>
+            <a href="discover.html" class="btn btn-primary"><span data-i18n="nav.discover">Discover</span></a>
+          </div>`;
+        applyI18n(getLang());
+        return;
+      }
+
+      const cat = getCategoryMeta(p.category);
+      const title = localizeField(p, 'title');
+      const desc = localizeField(p, 'desc');
+      const location = localizeField(p, 'location');
+      const story = localizeField(p, 'story');
+      const pct = Math.round((p.pledged / p.goal) * 100);
+      const catName = t(`cat.${p.category}`);
+
+      const rewardsHTML = p.rewards.map(r => {
+        const rName = localizeField(r, 'name');
+        const rDesc = localizeField(r, 'desc');
+        return `
+          <div class="reward-card">
+            <div class="reward-amount">${formatCurrency(r.amount)}</div>
+            <div class="reward-name">${rName}</div>
+            <div class="reward-desc">${rDesc}</div>
+            <div class="reward-meta">
+              <span>📅 ${t('project.estimatedDelivery')}: ${r.delivery}</span>
+              ${r.limit ? `<span>🔒 ${r.limit} ${t('common.new')}</span>` : ''}
+            </div>
+            <button class="reward-select" data-i18n="project.selectReward">Select</button>
+          </div>`;
+      }).join('');
+
+      const updatesHTML = p.updates.length > 0
+        ? p.updates.map(u => {
+            const uTitle = localizeField(u, 'title');
+            return `<div style="padding:16px 0;border-bottom:1px solid var(--border);"><div style="font-size:13px;color:var(--text-3);">${u.date}</div><div style="font-size:15px;font-weight:600;margin-top:4px;">${uTitle}</div></div>`;
+          }).join('')
+        : `<p style="color:var(--text-2);padding:24px 0;" data-i18n="project.noUpdates">No updates yet.</p>`;
+
+      const equityHTML = p.equity ? `
+        <div class="sidebar-card">
+          <h3 data-i18n="project.equityOffered">Equity Offered</h3>
+          <div style="font-size:32px;font-weight:800;color:var(--accent);margin-bottom:8px;">${p.equity.offered}%</div>
+          <div style="font-size:13px;color:var(--text-2);margin-bottom:16px;">
+            <span data-i18n="project.minInvestment">Min. Investment</span>: ${formatCurrency(p.equity.minInvestment)}
+          </div>
+          <button class="reward-select" data-i18n="project.backProject">Back This Project</button>
+        </div>` : '';
+
+      document.getElementById('detailPage').innerHTML = `
+        <div class="detail-header">
+          <div class="detail-breadcrumb">
+            <a href="index.html">JEBI CAPITAL</a> /
+            <a href="discover.html" data-i18n="nav.discover">Discover</a> /
+            <span>${catName}</span>
+          </div>
+          <h1 class="detail-title">${title}</h1>
+          <div class="detail-meta">
+            <span>📍 ${location}</span>
+            <span>👤 ${p.creator}</span>
+            <span>${cat.icon} ${catName}</span>
+            ${p.verified ? `<span style="color:var(--green);">✓ ${t('project.verificationStatus')}</span>` : `<span style="color:var(--yellow);">⏳ ${t('project.verificationPending')}</span>`}
+          </div>
+        </div>
+
+        <div class="detail-layout">
+          <div class="detail-main">
+            <div class="detail-hero-img">
+              <div class="gradient-overlay" style="background:${p.gradient}"></div>
+            </div>
+
+            <div class="detail-stats-bar">
+              <div class="detail-stat">
+                <div class="num accent">${formatCurrency(p.pledged)}</div>
+                <div class="label" data-i18n="project.pledged">Pledged</div>
+              </div>
+              <div class="detail-stat">
+                <div class="num">${formatCurrency(p.goal)}</div>
+                <div class="label" data-i18n="project.fundingGoal">Funding Goal</div>
+              </div>
+              <div class="detail-stat">
+                <div class="num">${formatNumber(p.backers)}</div>
+                <div class="label" data-i18n="project.backers">backers</div>
+              </div>
+              <div class="detail-stat">
+                <div class="num">${p.daysLeft}</div>
+                <div class="label" data-i18n="project.daysLeft">days left</div>
+              </div>
+            </div>
+
+            <div class="detail-tabs">
+              <button class="detail-tab active" onclick="switchTab(event,'story')" data-i18n="project.story">Story</button>
+              <button class="detail-tab" onclick="switchTab(event,'rewards')" data-i18n="project.rewards">Rewards</button>
+              <button class="detail-tab" onclick="switchTab(event,'updates')" data-i18n="project.updates">Updates</button>
+              <button class="detail-tab" onclick="switchTab(event,'comments')" data-i18n="project.comments">Comments</button>
+            </div>
+
+            <div class="detail-tab-content active" id="tab-story">
+              <div class="detail-story">${story}</div>
+              <div style="margin-top:32px;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:var(--red);" data-i18n="project.riskFactors">Risk Factors</h3>
+                <p style="font-size:14px;color:var(--text-2);line-height:1.6;" data-i18n="project.riskText">Agricultural projects are subject to weather, pest, and market risks. Carbon verification is third-party audited.</p>
+              </div>
+            </div>
+
+            <div class="detail-tab-content" id="tab-rewards">
+              <h3 style="font-size:20px;font-weight:700;margin-bottom:20px;" data-i18n="project.rewards">Rewards</h3>
+              ${rewardsHTML}
+            </div>
+
+            <div class="detail-tab-content" id="tab-updates">
+              <h3 style="font-size:20px;font-weight:700;margin-bottom:20px;" data-i18n="project.updatesTitle">Project Updates</h3>
+              ${updatesHTML}
+            </div>
+
+            <div class="detail-tab-content" id="tab-comments">
+              <h3 style="font-size:20px;font-weight:700;margin-bottom:20px;" data-i18n="project.commentsTitle">Comments</h3>
+              <p style="color:var(--text-2);padding:24px 0;" data-i18n="project.noComments">Be the first to comment.</p>
+              <div style="display:flex;gap:12px;margin-top:16px;">
+                <input type="text" class="form-input" data-i18n-attr="placeholder:project.addComment" placeholder="Add a comment…">
+                <button class="btn btn-primary" style="height:48px;padding:0 24px;" data-i18n="project.post">Post</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-sidebar">
+            <!-- Carbon impact card -->
+            <div class="sidebar-card carbon-card">
+              <h3 style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:8px;">🌍 <span data-i18n="project.carbonOffset">Carbon Offset</span></h3>
+              <div class="carbon-num">${p.carbonOffset > 0 ? formatNumber(p.carbonOffset) : '—'}</div>
+              <div class="carbon-label" data-i18n="project.tonsCO2">tons CO₂/yr</div>
+              ${p.verified ? `<div class="carbon-equiv">✓ ${t('project.verifiedBy')}: ${p.verifier}</div>` : `<div class="carbon-equiv" style="color:var(--yellow);">⏳ ${t('project.verificationPending')}</div>`}
+            </div>
+
+            <!-- Progress card -->
+            <div class="sidebar-card">
+              <div style="margin-bottom:16px;">
+                <div class="progress-bar" style="height:8px;"><div class="progress-fill" style="width:${Math.min(pct,100)}%"></div></div>
+                <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:14px;">
+                  <span style="font-weight:700;color:var(--accent);">${pct}%</span>
+                  <span style="color:var(--text-2);">${formatCurrency(p.pledged)} / ${formatCurrency(p.goal)}</span>
+                </div>
+              </div>
+              <button class="reward-select" style="margin-top:8px;" data-i18n="project.backProject">Back This Project</button>
+            </div>
+
+            ${equityHTML}
+
+            <!-- Share/Save -->
+            <div class="sidebar-card" style="display:flex;gap:8px;">
+              <button class="btn btn-outline" style="flex:1;height:40px;font-size:13px;" data-i18n="project.shareProject">Share</button>
+              <button class="btn btn-outline" style="flex:1;height:40px;font-size:13px;" data-i18n="project.saveProject">Save</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      applyI18n(getLang());
+    }
+
+    function switchTab(e, tabName) {
+      document.querySelectorAll('.detail-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.detail-tab-content').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    renderDetail();
+
+    window.addEventListener('langChanged', renderDetail);
+  </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JEBI CAPITAL — Zero-Carbon Coffee Crowdfunding</title>
+  <meta name="description" content="The world's first crowdfunding platform dedicated to zero-carbon coffee — from aeroponic cultivation to your cup.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Page content -->
+  <div class="content">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-grid"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <span data-i18n="hero.badge">World's First Zero-Carbon Coffee Crowdfunding Platform</span>
+          </div>
+          <h1 class="hero-title">
+            <span data-i18n="hero.title">Fund the Future of</span><br>
+            <span class="accent" data-i18n="hero.titleAccent">Zero-Carbon Coffee</span>
+          </h1>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">From aeroponic cultivation to your morning cup — back projects that eliminate carbon across the entire coffee supply chain. Earn returns. Offset emissions. Change the industry.</p>
+          <div class="hero-cta">
+            <a href="discover.html" class="btn btn-primary">
+              <span data-i18n="hero.ctaPrimary">Explore Projects</span>
+            </a>
+            <a href="start.html" class="btn btn-outline">
+              <span data-i18n="hero.ctaSecondary">Start Your Project</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-num">$4.2M+</div>
+            <div class="stat-label" data-i18n="stats.funded">Total Funded</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">147</div>
+            <div class="stat-label" data-i18n="stats.projects">Live Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">12,400t</div>
+            <div class="stat-label" data-i18n="stats.offset">CO₂ Offset</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">8,900+</div>
+            <div class="stat-label" data-i18n="stats.backers">Backers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">34</div>
+            <div class="stat-label" data-i18n="stats.countries">Countries</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="cat.title">Explore by Category</h2>
+          <p class="section-subtitle" data-i18n="cat.subtitle">Every stage of the coffee value chain — decarbonized.</p>
+        </div>
+        <div class="cat-grid" id="catGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section class="section" style="background:var(--bg-elev);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="navDiscover.trending">Trending Now</h2>
+          <p class="section-subtitle" data-i18n="discover.subtitle">Find zero-carbon coffee projects to back — filter by category, carbon impact, or funding stage.</p>
+        </div>
+        <div class="projects-grid" id="featuredProjects">
+          <!-- Populated by JS -->
+        </div>
+        <div class="text-center mt-48">
+          <a href="discover.html" class="btn btn-outline">
+            <span data-i18n="common.viewAll">View All</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS PREVIEW -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="how.title">How JEBI Capital Works</h2>
+          <p class="section-subtitle" data-i18n="how.subtitle">A crowdfunding platform purpose-built for the zero-carbon coffee economy.</p>
+        </div>
+        <div class="how-split">
+          <div class="how-block">
+            <h3 data-i18n="how.creatorsTitle">For Creators</h3>
+            <p class="sub" data-i18n="how.creatorsSubtitle">Turn your climate-positive coffee idea into a funded reality.</p>
+            <div class="how-steps">
+              <div class="how-step">
+                <div class="how-step-num">1</div>
+                <div>
+                  <h4 data-i18n="how.creatorStep1Title">Apply</h4>
+                  <p data-i18n="how.creatorStep1D">Submit your project with a carbon reduction plan. Our team reviews within 3–5 days.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="how-step-num">2</div>
+                <div>
+                  <h4 data-i18n="how.creatorStep2Title">Verify</h4>
+                  <p data-i18n="how.creatorStep2D">Get your carbon impact verified by our accredited third-party partners.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="how-step-num">3</div>
+                <div>
+                  <h4 data-i18n="how.creatorStep3Title">Launch</h4>
+                  <p data-i18n="how.creatorStep3D">Go live and start raising funds from a global community of climate-conscious backers.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="how-step-num">4</div>
+                <div>
+                  <h4 data-i18n="how.creatorStep4Title">Deliver</h4>
+                  <p data-i18n="how.creatorStep4D">Execute your project, send rewards, and report carbon impact quarterly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="how-block">
+            <h3 data-i18n="how.backersTitle">For Backers</h3>
+            <p class="sub" data-i18n="how.backersSubtitle">Back projects that decarbonize coffee. Earn rewards, equity, or carbon credits.</p>
+            <div class="how-steps">
+              <div class="how-step">
+                <div class="how-step-num">1</div>
+                <div>
+                  <h4 data-i18n="how.backerStep1Title">Discover</h4>
+                  <p data-i18n="how.backerStep1D">Browse verified projects across the coffee supply chain.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="how-step-num">2</div>
+                <div>
+                  <h4 data-i18n="how.backerStep2Title">Pledge</h4>
+                  <p data-i18n="how.backerStep2D">Choose a reward tier or invest in equity. Every project has verified carbon impact.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="how-step-num">3</div>
+                <div>
+                  <h4 data-i18n="how.backerStep3Title">Track</h4>
+                  <p data-i18n="how.backerStep3D">Monitor project progress and carbon offset in real-time through your dashboard.</p>
+                </div>
+              </div>
+              <div class="how-step">
+                <div class="how-step-num">4</div>
+                <div>
+                  <h4 data-i18n="how.backerStep4Title">Receive</h4>
+                  <p data-i18n="how.backerStep4D">Get your rewards, dividends, or carbon credits as projects reach milestones.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-48">
+          <a href="how-it-works.html" class="btn btn-primary">
+            <span data-i18n="common.learnMore">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINANCIAL PRODUCTS PREVIEW -->
+    <section class="section" style="background:var(--bg-elev);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="financial.title">Financial Products</h2>
+          <p class="section-subtitle" data-i18n="financial.subtitle">Invest in the zero-carbon coffee economy through regulated financial instruments.</p>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-card" onclick="window.location.href='financial.html#carbon-credits'">
+            <div class="cat-icon" style="background:rgba(0,186,124,.15);color:#00ba7c;">🌍</div>
+            <div class="cat-name" data-i18n="financial.carbonCreditsTitle">Carbon Credits</div>
+            <div class="cat-desc" data-i18n="financial.carbonCreditsD">Trade verified carbon offsets generated by coffee projects.</div>
+          </div>
+          <div class="cat-card" onclick="window.location.href='financial.html#green-bonds'">
+            <div class="cat-icon" style="background:rgba(29,155,240,.15);color:#1d9bf0;">📊</div>
+            <div class="cat-name" data-i18n="financial.greenBondsTitle">Green Bonds</div>
+            <div class="cat-desc" data-i18n="financial.greenBondsD">Fixed-income instruments financing large-scale coffee infrastructure.</div>
+          </div>
+          <div class="cat-card" onclick="window.location.href='financial.html#impact-funds'">
+            <div class="cat-icon" style="background:rgba(156,39,176,.15);color:#9c27b0;">📈</div>
+            <div class="cat-name" data-i18n="financial.impactFundsTitle">Impact Investment Funds</div>
+            <div class="cat-desc" data-i18n="financial.impactFundsD">Diversified portfolios of equity stakes in zero-carbon coffee companies.</div>
+          </div>
+          <div class="cat-card" onclick="window.location.href='financial.html#coffee-futures'">
+            <div class="cat-icon" style="background:rgba(255,122,0,.15);color:#ff7a00;">☕</div>
+            <div class="cat-name" data-i18n="financial.coffeeFuturesTitle">Coffee Futures (Carbon-Premium)</div>
+            <div class="cat-desc" data-i18n="financial.coffeeFuturesD">Forward contracts on coffee with built-in carbon premium.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    initShared({ isIndex: true });
+
+    // Render categories
+    function renderCategories() {
+      const grid = document.getElementById('catGrid');
+      grid.innerHTML = CATEGORIES.map(cat => `
+        <a href="discover.html?category=${cat.key}" class="cat-card">
+          <div class="cat-icon" style="background:${cat.color}22;color:${cat.color};">${cat.icon}</div>
+          <div class="cat-name" data-i18n="cat.${cat.key}">${t('cat.' + cat.key)}</div>
+          <div class="cat-desc" data-i18n="cat.${cat.key}D">${t('cat.' + cat.key + 'D')}</div>
+        </a>
+      `).join('');
+      applyI18n(getLang());
+    }
+
+    // Render featured projects (trending)
+    function renderFeatured() {
+      const grid = document.getElementById('featuredProjects');
+      const featured = getFilteredProjects({ filter: 'trending' }).slice(0, 6);
+      grid.innerHTML = featured.map(renderProjectCard).join('');
+    }
+
+    renderCategories();
+    renderFeatured();
+
+    window.addEventListener('langChanged', () => {
+      renderCategories();
+      renderFeatured();
+    });
+  </script>
+</body>
+</html>

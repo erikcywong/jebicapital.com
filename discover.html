@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Projects — JEBI CAPITAL</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="discover-layout">
+    <!-- FILTER SIDEBAR -->
+    <aside class="filter-sidebar">
+      <div class="filter-group">
+        <div class="filter-title" data-i18n="discover.category">Category</div>
+        <label class="filter-option">
+          <input type="radio" name="category" value="all" checked>
+          <span data-i18n="discover.filterAll">All</span>
+        </label>
+        <div id="categoryFilters"></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title" data-i18n="discover.carbonImpact">Carbon Impact</div>
+        <label class="filter-option">
+          <input type="radio" name="carbonImpact" value="all" checked>
+          <span data-i18n="discover.filterAll">All</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="carbonImpact" value="low">
+          <span data-i18n="discover.low">Low (0–100 t CO₂)</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="carbonImpact" value="medium">
+          <span data-i18n="discover.medium">Medium (100–500 t CO₂)</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="carbonImpact" value="high">
+          <span data-i18n="discover.high">High (500+ t CO₂)</span>
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title" data-i18n="discover.fundingStage">Funding Stage</div>
+        <label class="filter-option">
+          <input type="radio" name="stage" value="all" checked>
+          <span data-i18n="discover.filterAll">All</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="stage" value="seed">
+          <span data-i18n="discover.seed">Seed</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="stage" value="growth">
+          <span data-i18n="discover.growth">Growth</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="stage" value="scaling">
+          <span data-i18n="discover.scaling">Scaling</span>
+        </label>
+      </div>
+
+      <button class="btn btn-outline" style="width:100%;height:40px;font-size:13px;" onclick="clearFilters()">
+        <span data-i18n="discover.clearFilters">Clear Filters</span>
+      </button>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="discover-main">
+      <div class="discover-header">
+        <h1 data-i18n="discover.title">Discover Projects</h1>
+        <div class="discover-sort">
+          <span data-i18n="discover.sortBy">Sort by</span>
+          <select id="sortSelect" onchange="applyFilters()">
+            <option value="trending" data-i18n="discover.trending">Trending</option>
+            <option value="endingSoon" data-i18n="discover.endingSoon">Ending Soon</option>
+            <option value="mostFunded" data-i18n="discover.mostFunded">Most Funded</option>
+            <option value="newest" data-i18n="discover.newest">Newest</option>
+          </select>
+        </div>
+      </div>
+      <div class="discover-results-count" id="resultsCount"></div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </main>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    initShared({ isIndex: false });
+
+    // Parse URL params
+    function getUrlParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    function renderCategoryFilters() {
+      const container = document.getElementById('categoryFilters');
+      container.innerHTML = CATEGORIES.map(cat => `
+        <label class="filter-option">
+          <input type="radio" name="category" value="${cat.key}">
+          <span>${cat.icon} <span data-i18n="cat.${cat.key}">${t('cat.' + cat.key)}</span></span>
+        </label>
+      `).join('');
+
+      // Attach listeners
+      document.querySelectorAll('input[name="category"]').forEach(el => el.addEventListener('change', applyFilters));
+      document.querySelectorAll('input[name="carbonImpact"]').forEach(el => el.addEventListener('change', applyFilters));
+      document.querySelectorAll('input[name="stage"]').forEach(el => el.addEventListener('change', applyFilters));
+    }
+
+    function getFilters() {
+      return {
+        category: document.querySelector('input[name="category"]:checked')?.value || 'all',
+        carbonImpact: document.querySelector('input[name="carbonImpact"]:checked')?.value || 'all',
+        stage: document.querySelector('input[name="stage"]:checked')?.value || 'all',
+        sort: document.getElementById('sortSelect').value
+      };
+    }
+
+    function applyFilters() {
+      const f = getFilters();
+      const projects = getFilteredProjects({
+        category: f.category !== 'all' ? f.category : null,
+        carbonImpact: f.carbonImpact !== 'all' ? f.carbonImpact : null,
+        stage: f.stage !== 'all' ? f.stage : null,
+        sort: f.sort
+      });
+
+      const grid = document.getElementById('projectsGrid');
+      const count = document.getElementById('resultsCount');
+
+      if (projects.length === 0) {
+        grid.innerHTML = `<p style="text-align:center;padding:60px;color:var(--text-2);" data-i18n="discover.noResults">No projects match your filters.</p>`;
+        count.textContent = `0 ${t('discover.results')}`;
+      } else {
+        grid.innerHTML = projects.map(renderProjectCard).join('');
+        count.textContent = `${projects.length} ${t('discover.results')}`;
+      }
+    }
+
+    function clearFilters() {
+      document.querySelector('input[name="category"][value="all"]').checked = true;
+      document.querySelector('input[name="carbonImpact"][value="all"]').checked = true;
+      document.querySelector('input[name="stage"][value="all"]').checked = true;
+      applyFilters();
+    }
+
+    // Initialize
+    renderCategoryFilters();
+
+    // Apply URL params
+    const urlFilter = getUrlParam('filter');
+    const urlCategory = getUrlParam('category');
+    if (urlFilter) {
+      const sortSelect = document.getElementById('sortSelect');
+      if ([...sortSelect.options].some(o => o.value === urlFilter)) {
+        sortSelect.value = urlFilter;
+      }
+    }
+    if (urlCategory) {
+      const radio = document.querySelector(`input[name="category"][value="${urlCategory}"]`);
+      if (radio) radio.checked = true;
+    }
+
+    applyFilters();
+    applyI18n(getLang());
+
+    window.addEventListener('langChanged', () => {
+      renderCategoryFilters();
+      // Re-apply URL params after re-render
+      if (urlCategory) {
+        const radio = document.querySelector(`input[name="category"][value="${urlCategory}"]`);
+        if (radio) radio.checked = true;
+      }
+      applyFilters();
+    });
+  </script>
+</body>
+</html>
