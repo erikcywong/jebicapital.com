@@ -42,6 +42,30 @@
       <!-- Step 1: Project Basics -->
       <div class="form-step active" id="form-step-1">
         <div class="form-group">
+          <label class="form-label"><span data-i18n="start.trackLabel">Application Track</span> <span class="req">*</span></label>
+          <div class="track-select">
+            <label class="track-option">
+              <input type="radio" name="track" value="accelerator" checked>
+              <span class="track-box">
+                <span class="track-name"><span data-i18n="start.trackAccel">Accelerator Track</span><span class="track-badge" data-i18n="start.trackRecommended">Recommended</span></span>
+                <span class="track-desc" data-i18n="start.trackAccelD">JEBI Combinator B01 — $50k–150k SAFE, 12-week batch, Demo Day. Apply by Dec 31, 2026.</span>
+              </span>
+            </label>
+            <label class="track-option">
+              <input type="radio" name="track" value="crowdfunding">
+              <span class="track-box">
+                <span class="track-name"><span data-i18n="start.trackCrowd">Crowdfunding Only</span></span>
+                <span class="track-desc" data-i18n="start.trackCrowdD">Launch your campaign on the platform without joining a batch.</span>
+              </span>
+            </label>
+          </div>
+          <div class="track-note" id="trackNote">
+            <span data-i18n="start.trackAccelNote">Accelerator track selected: your application will be reviewed for Batch 01. Standard deal terms apply — see the program page. Crowdfunding placement follows Demo Day.</span>
+            <a href="batch.html" data-i18n="start.trackViewProgram">View program →</a>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label class="form-label"><span data-i18n="start.projectName">Project Name</span> <span class="req">*</span></label>
           <input type="text" class="form-input" name="projectName" data-i18n-attr="placeholder:start.projectNamePlaceholder" required>
           <div class="form-error" data-i18n="start.requiredField">This field is required</div>
@@ -190,6 +214,20 @@
 
     let currentStep = 1;
 
+    // Track selection: preselect from URL (?track=accelerator), toggle note
+    const trackRadios = document.querySelectorAll('input[name="track"]');
+    const trackNote = document.getElementById('trackNote');
+    function updateTrackNote() {
+      const val = document.querySelector('input[name="track"]:checked').value;
+      trackNote.classList.toggle('visible', val === 'accelerator');
+    }
+    trackRadios.forEach(r => r.addEventListener('change', updateTrackNote));
+    const urlTrack = new URLSearchParams(location.search).get('track');
+    if (urlTrack === 'accelerator' || urlTrack === 'crowdfunding') {
+      document.querySelector(`input[name="track"][value="${urlTrack}"]`).checked = true;
+    }
+    updateTrackNote();
+
     function nextStep(from, to) {
       // Basic validation for step 1
       if (from === 1) {
@@ -239,6 +277,7 @@
 
       document.getElementById('reviewBox').innerHTML = `
         <h3 data-i18n="start.step1">Project Basics</h3>
+        <div class="review-row"><span class="label" data-i18n="start.trackLabel">Application Track</span><span class="val">${fd.get('track') === 'crowdfunding' ? t('start.trackCrowd') : t('start.trackAccel')}</span></div>
         <div class="review-row"><span class="label" data-i18n="start.projectName">Project Name</span><span class="val">${fd.get('projectName') || '—'}</span></div>
         <div class="review-row"><span class="label" data-i18n="start.category">Project Category</span><span class="val">${catName}</span></div>
         <div class="review-row"><span class="label" data-i18n="start.location">Project Location</span><span class="val">${fd.get('location') || '—'}</span></div>

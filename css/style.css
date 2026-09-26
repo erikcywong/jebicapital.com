@@ -1879,3 +1879,54 @@ body.rtl .nav-search input { padding: 0 14px 0 36px; }
   .batch-stat { border-inline-end: none; border-bottom: 1px solid var(--border); }
   .batch-stat:last-child { border-bottom: none; }
 }
+
+/* ---------- Track selection (start.html) ---------- */
+.track-select { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.track-option { cursor: pointer; }
+.track-option input { position: absolute; opacity: 0; pointer-events: none; }
+.track-box {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--bg-card);
+  transition: border-color var(--t), background var(--t);
+  height: 100%;
+}
+.track-option:hover .track-box { border-color: var(--border-2); }
+.track-option input:checked + .track-box {
+  border-color: var(--accent);
+  background: rgba(29, 155, 240, .06);
+}
+.track-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.track-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  padding: 2px 8px;
+  letter-spacing: .3px;
+}
+.track-desc { display: block; font-size: 13px; color: var(--text-2); margin-top: 6px; line-height: 1.55; }
+.track-note {
+  display: none;
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(29, 155, 240, .35);
+  background: rgba(29, 155, 240, .07);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.track-note.visible { display: block; }
+.track-note a { color: var(--accent); margin-inline-start: 4px; white-space: nowrap; }
+@media (max-width: 640px) { .track-select { grid-template-columns: 1fr; } }
