@@ -24,6 +24,19 @@ function navbarHTML() {
 
       <div class="nav-items" id="navItems">
         <div class="nav-item">
+          <span class="nav-link nav-link-accent" data-i18n="navCombinator.label">Combinator
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+          <div class="nav-dropdown">
+            <a href="batch.html" data-i18n="navCombinator.program">The Program</a>
+            <a href="batch.html#deal" data-i18n="navCombinator.deal">Standard Deal</a>
+            <a href="batch.html#timeline" data-i18n="navCombinator.timeline">Batch Timeline</a>
+            <a href="batch.html#demo-day" data-i18n="navCombinator.demoDay">Demo Day</a>
+            <a href="batch.html#faq" data-i18n="navCombinator.faq">FAQ</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
           <span class="nav-link" data-i18n="nav.discover">Discover
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </span>
@@ -134,6 +147,7 @@ function footerHTML() {
 
         <div class="footer-col">
           <h4 data-i18n="footer.explore">Explore</h4>
+          <a href="batch.html" style="color:var(--accent);" data-i18n="navCombinator.label">Combinator</a>
           <a href="discover.html" data-i18n="nav.discover">Discover</a>
           <a href="discover.html?filter=trending" data-i18n="navDiscover.trending">Trending Now</a>
           <a href="discover.html?filter=mostFunded" data-i18n="navDiscover.mostFunded">Most Funded</a>

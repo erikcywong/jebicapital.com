@@ -361,6 +361,91 @@ const I18N = {
       changeLater: "You can change this anytime in the navigation bar."
     },
 
+    batchBanner: {
+      tag: "JEBI Combinator · Batch 01",
+      title: "The accelerator for the zero-carbon coffee chain",
+      subtitle: "12 weeks. Funding, aeroponic tech, carbon verification — then Demo Day to our investor network.",
+      deadline: "Applications close Dec 31, 2026",
+      cta: "Apply for Batch 01",
+      secondary: "See the program"
+    },
+
+    batch: {
+      heroBadge: "JEBI Combinator — Batch 01 · Applications Open",
+      heroTitle: "Turn coffee builders into",
+      heroTitleAccent: "category winners",
+      heroSubtitle: "A Y Combinator-style accelerator, purpose-built for the zero-carbon coffee supply chain. We select a small cohort of founders, fund them on a standard deal, work with them intensively for 12 weeks, and put them in front of investors on Demo Day.",
+      applyCta: "Apply for Batch 01",
+      deadline: "Applications close Dec 31, 2026 · Batch runs Feb–Apr 2027",
+
+      statsCohort: "Founders per batch",
+      statsWeeks: "Weeks of intensive work",
+      statsInvest: "Investment per team",
+      statsCarbon: "Carbon verification included",
+
+      dealTitle: "The Standard Deal",
+      dealSubtitle: "One transparent term for every team — no negotiation, no exceptions. That's the point.",
+      deal1Title: "$50k–150k on a SAFE",
+      deal1D: "Standardized investment for 5–7% equity, based on stage. Same term for every team in the batch.",
+      deal2Title: "Aeroponic technology license",
+      deal2D: "Access to NAPELL aeroponic cultivation systems, smart-farm IoT stack, and propagation know-how.",
+      deal3Title: "Carbon verification included",
+      deal3D: "Third-party verification (Verra, Gold Standard, SCS) of your project's carbon impact, covered by JEBI.",
+      deal4Title: "Route to market",
+      deal4D: "Distribution through the JEBI ecosystem: farms, roasteries, cafés, and the SHINAE Coffee Bank platform.",
+
+      timelineTitle: "12 Weeks, Then Demo Day",
+      timelineSubtitle: "Remote-first with an on-farm residency. Built to compress years of learning into weeks.",
+      w1: "Weeks 1–2",
+      w1D: "Selection & onboarding — finalize the deal, define your coffee-chain track, set carbon baselines.",
+      w2: "Weeks 3–6",
+      w2D: "Build — product, supply contracts, aeroponic pilots, and customer conversations. Weekly check-ins.",
+      w3: "Weeks 7–10",
+      w3D: "On-farm residency — hands-on aeroponic training and supply-chain integration at a partner base.",
+      w4: "Weeks 11–12",
+      w4D: "Demo Day prep — pitch rehearsal, metrics, and introductions to our investor and partner network.",
+      demoTitle: "Demo Day",
+      demoD: "Present to a curated room of climate investors, coffee trade buyers, and strategic partners. Batch projects also get priority placement on the JEBI Capital crowdfunding platform.",
+
+      tracksTitle: "Three Ways In",
+      tracksSubtitle: "We select teams across every stage of the coffee value chain — the batch becomes a supply chain.",
+      track1Title: "Supply side",
+      track1D: "Cultivation, processing, and origin operations. Get aeroponic tech, verification, and offtake partners.",
+      track2Title: "Demand side",
+      track2D: "Roasting, cafés, and retail. Secure verified low-carbon supply and sell through the JEBI network.",
+      track3Title: "Finance & carbon",
+      track3D: "Fintech, carbon MRV, and market infrastructure. Plug into SHINAE Coffee Bank and BeanFlow.",
+
+      mentorsTitle: "Operators, Not Tourists",
+      mentorsSubtitle: "Every mentor has built and shipped in the coffee or carbon economy.",
+      m1: "Aeroponic systems & propagation",
+      m2: "Carbon methodology & verification",
+      m3: "Coffee trade & offtake",
+      m4: "Growth & fundraising",
+
+      faqTitle: "Frequently Asked Questions",
+      q1: "Do we have to give up equity?",
+      a1: "Yes — the standard deal is $50k–150k on a SAFE for 5–7%, depending on stage. The same term for every team keeps the process fast and fair.",
+      q2: "Do we have to relocate?",
+      a2: "No. The program is remote-first, but weeks 7–10 include an on-farm residency at a partner growing base. Teams cover travel; JEBI covers the program.",
+      q3: "Is crowdfunding included?",
+      a3: "Batch companies get priority verification and featured placement on JEBI Capital after Demo Day, but Demo Day is the primary funding event.",
+      q4: "What are you looking for?",
+      a4: "Small teams (1–4 people) building anywhere in the coffee supply chain with a credible path to measurable carbon reduction. Stage matters less than speed.",
+      applyFooterTitle: "Batch 01 applications are open",
+      applyFooterD: "Applications close Dec 31, 2026. Decisions within two weeks of submission.",
+      applyFooterBtn: "Start Your Application"
+    },
+
+    navCombinator: {
+      label: "Combinator",
+      program: "The Program",
+      deal: "Standard Deal",
+      timeline: "Batch Timeline",
+      demoDay: "Demo Day",
+      faq: "FAQ"
+    },
+
     common: {
       loading: "Loading…",
       error: "Something went wrong. Please try again.",
@@ -749,6 +834,91 @@ const I18N = {
       changeLater: "你可以随时在导航栏中更改语言设置。"
     },
 
+    batchBanner: {
+      tag: "JEBI Combinator · 第 1 期",
+      title: "零碳咖啡产业链的加速器",
+      subtitle: "12 周。资金、气培技术、碳认证——最终在 Demo Day 对接我们的投资人网络。",
+      deadline: "申请截止 2026 年 12 月 31 日",
+      cta: "申请第 1 期",
+      secondary: "了解计划详情"
+    },
+
+    batch: {
+      heroBadge: "JEBI Combinator — 第 1 期 · 开放申请",
+      heroTitle: "让咖啡创业者成为",
+      heroTitleAccent: "品类冠军",
+      heroSubtitle: "一个专为零碳咖啡供应链打造的 Y Combinator 式加速器。我们每期精选一小批创始人，按标准条款投资，集中辅导 12 周，并在 Demo Day 将他们推向投资人。",
+      applyCta: "申请第 1 期",
+      deadline: "申请截止 2026 年 12 月 31 日 · 批次时间 2027 年 2–4 月",
+
+      statsCohort: "每期入选团队",
+      statsWeeks: "周集中辅导",
+      statsInvest: "每团队投资额",
+      statsCarbon: "含碳认证服务",
+
+      dealTitle: "标准化条款",
+      dealSubtitle: "所有团队同一个条款——无需谈判，没有例外。这正是意义所在。",
+      deal1Title: "$5 万–15 万 SAFE 投资",
+      deal1D: "按阶段获得 5–7% 股权的标准化投资。同一批次所有团队条款完全一致。",
+      deal2Title: "气培技术授权",
+      deal2D: "使用 NAPELL 气培种植系统、智慧农场 IoT 技术栈与育苗技术。",
+      deal3Title: "碳认证服务",
+      deal3D: "由第三方认证机构（Verra、Gold Standard、SCS）认证项目碳减排量，费用由 JEBI 承担。",
+      deal4Title: "市场通路",
+      deal4D: "接入 JEBI 生态的分销网络：种植基地、烘焙厂、咖啡馆与 SHINAE Coffee Bank 平台。",
+
+      timelineTitle: "12 周，然后是 Demo Day",
+      timelineSubtitle: "远程为主 + 基地驻场。目标是把数年的学习压缩到几周之内。",
+      w1: "第 1–2 周",
+      w1D: "筛选与入驻——签署条款，确定咖啡链赛道，建立碳基线。",
+      w2: "第 3–6 周",
+      w2D: "构建——产品、供应合同、气培试点与客户沟通。每周例会。",
+      w3: "第 7–10 周",
+      w3D: "基地驻场——在合作基地进行气培实操训练与供应链整合。",
+      w4: "第 11–12 周",
+      w4D: "Demo Day 筹备——路演打磨、数据整理，对接投资人与合作伙伴网络。",
+      demoTitle: "Demo Day",
+      demoD: "向精选的气候投资人、咖啡贸易买家和战略合作伙伴进行路演。批次项目还将获得 JEBI Capital 众筹平台的优先展示位。",
+
+      tracksTitle: "三种进入方式",
+      tracksSubtitle: "我们选拔覆盖咖啡价值链各环节的团队——一个批次就是一条供应链。",
+      track1Title: "供给侧",
+      track1D: "种植、加工与产地运营。获得气培技术、碳认证与承购伙伴。",
+      track2Title: "需求侧",
+      track2D: "烘焙、咖啡馆与零售。锁定经认证的低碳货源，通过 JEBI 网络销售。",
+      track3Title: "金融与碳",
+      track3D: "金融科技、碳 MRV 与市场基础设施。接入 SHINAE Coffee Bank 与 BeanFlow。",
+
+      mentorsTitle: "实干型导师",
+      mentorsSubtitle: "每位导师都在咖啡或碳经济领域真正做过、交付过。",
+      m1: "气培系统与育苗",
+      m2: "碳方法学与认证",
+      m3: "咖啡贸易与承购",
+      m4: "增长与融资",
+
+      faqTitle: "常见问题",
+      q1: "需要出让股权吗？",
+      a1: "是的——标准条款是以 SAFE 形式投资 5–15 万美元换取 5–7% 股权（视阶段而定）。所有团队同一条款，流程快速且公平。",
+      q2: "需要搬迁吗？",
+      a2: "不需要。项目以远程为主，但第 7–10 周需在合作种植基地驻场。差旅自理；项目费用由 JEBI 承担。",
+      q3: "包含众筹吗？",
+      a3: "批次公司将在 Demo Day 后获得 JEBI Capital 的优先认证和推荐展示位，但 Demo Day 才是主要融资场景。",
+      q4: "你们在找什么样的团队？",
+      a4: "1–4 人的小团队，在咖啡供应链任一环节创业，并有可衡量的碳减排路径。阶段不重要，速度才重要。",
+      applyFooterTitle: "第 1 期申请已开放",
+      applyFooterD: "申请截止 2026 年 12 月 31 日。提交后两周内通知结果。",
+      applyFooterBtn: "开始申请"
+    },
+
+    navCombinator: {
+      label: "加速器",
+      program: "计划介绍",
+      deal: "标准化条款",
+      timeline: "批次时间线",
+      demoDay: "Demo Day",
+      faq: "常见问题"
+    },
+
     common: {
       loading: "加载中……",
       error: "出错了。请重试。",
@@ -1135,6 +1305,91 @@ const I18N = {
       arabicSub: "العربية السعودية",
       continue: "متابعة",
       changeLater: "يمكنك تغيير هذا في أي وقت من شريط التنقل."
+    },
+
+    batchBanner: {
+      tag: "جيبي كومبيناتور · الدفعة 01",
+      title: "مسرّع سلسلة القهوة خالية الكربون",
+      subtitle: "12 أسبوعًا. تمويل، تقنية الزراعة الهوائية، توثيق الكربون — ثم يوم العرض أمام شبكة مستثمرينا.",
+      deadline: "آخر موعد للتقديم: 31 ديسمبر 2026",
+      cta: "التقدم للدفعة 01",
+      secondary: "تفاصيل البرنامج"
+    },
+
+    batch: {
+      heroBadge: "جيبي كومبيناتور — الدفعة 01 · التقديم مفتوح",
+      heroTitle: "نحوّل بناة القهوة إلى",
+      heroTitleAccent: "قادة الفئة",
+      heroSubtitle: "مسرّع على طريقة Y Combinator، مصمم خصيصًا لسلسلة توريد القهوة خالية الكربون. نختار مجموعة صغيرة من المؤسسين، ونستثمر فيهم بشروط موحدة، ونعمل معهم بكثافة لمدة 12 أسبوعًا، ثم نضعهم أمام المستثمرين في يوم العرض.",
+      applyCta: "التقدم للدفعة 01",
+      deadline: "آخر موعد للتقديم: 31 ديسمبر 2026 · الدفعة: فبراير–أبريل 2027",
+
+      statsCohort: "فرق في كل دفعة",
+      statsWeeks: "أسبوعًا من العمل المكثف",
+      statsInvest: "استثمار لكل فريق",
+      statsCarbon: "توثيق الكربون مشمول",
+
+      dealTitle: "الشروط الموحدة",
+      dealSubtitle: "شروط واحدة وشفافة لكل الفرق — دون تفاوض ودون استثناءات. هذا هو الهدف.",
+      deal1Title: "50–150 ألف دولار عبر SAFE",
+      deal1D: "استثمار موحد مقابل 5–7% من الأسهم، حسب المرحلة. نفس الشروط لكل فريق في الدفعة.",
+      deal2Title: "ترخيص تقنية الزراعة الهوائية",
+      deal2D: "الوصول إلى أنظمة NAPELL للزراعة الهوائية، ومنظومة إنترنت الأشياء الزراعية، وخبرات الإكثار.",
+      deal3Title: "توثيق الكربون مشمول",
+      deal3D: "توثيق مستقل (فيرا، جولد ستاندرد، SCS) للأثر الكربوني لمشروعك على حساب جيبي.",
+      deal4Title: "الوصول إلى السوق",
+      deal4D: "التوزيع عبر منظومة جيبي: المزارع، والمحمصات، والمقاهي، ومنصة SHINAE Coffee Bank.",
+
+      timelineTitle: "12 أسبوعًا، ثم يوم العرض",
+      timelineSubtitle: "عن بُعد في الأساس مع إقامة ميدانية. مصمم لضغط سنوات من التعلم في أسابيع.",
+      w1: "الأسبوعان 1–2",
+      w1D: "الاختيار والتأهيل — إتمام الاتفاق، تحديد مسارك في سلسلة القهوة، وضع خط أساس الكربون.",
+      w2: "الأسابيع 3–6",
+      w2D: "البناء — المنتج، عقود التوريد، تجارب الزراعة الهوائية، ومحادثات العملاء. اجتماعات أسبوعية.",
+      w3: "الأسابيع 7–10",
+      w3D: "الإقامة الميدانية — تدريب عملي على الزراعة الهوائية والتكامل مع سلسلة التوريد في قاعدة شريكة.",
+      w4: "الأسابيع 11–12",
+      w4D: "التحضير ليوم العرض — تدريب على العرض، والمقاييس، ومقدمات مع شبكة المستثمرين والشركاء.",
+      demoTitle: "يوم العرض",
+      demoD: "اعرض أمام نخبة من مستثمري المناخ ومشتري تجارة القهوة والشركاء الاستراتيجيين. كما تحصل فرق الدفعة على أسبقية العرض على منصة جيبي كابيتال للتمويل الجماعي.",
+
+      tracksTitle: "ثلاث طرق للدخول",
+      tracksSubtitle: "نختار فرقًا من كل مراحل سلسلة القهوة — الدفعة الواحدة تشكل سلسلة توريد متكاملة.",
+      track1Title: "جانب التوريد",
+      track1D: "الزراعة والمعالجة وعمليات المنشأ. احصل على تقنية الزراعة الهوائية والتوثيق وشركاء الشراء.",
+      track2Title: "جانب الطلب",
+      track2D: "التحميص والمقاهي والتجزئة. أمّن توريدًا منخفض الكربون موثقًا وبِع عبر شبكة جيبي.",
+      track3Title: "التمويل والكربون",
+      track3D: "التقنية المالية وقياس الكربون والبنية التحتية للسوق. اربط بمنصة SHINAE Coffee Bank و BeanFlow.",
+
+      mentorsTitle: "موجهون من أهل العمل",
+      mentorsSubtitle: "كل مرشد بنى وسلّم فعليًا في اقتصاد القهوة أو الكربون.",
+      m1: "أنظمة الزراعة الهوائية والإكثار",
+      m2: "منهجية الكربون والتوثيق",
+      m3: "تجارة القهوة والشراء",
+      m4: "النمو وجمع التمويل",
+
+      faqTitle: "الأسئلة الشائعة",
+      q1: "هل علينا التنازل عن أسهم؟",
+      a1: "نعم — الشروط الموحدة هي 50–150 ألف دولار عبر SAFE مقابل 5–7% حسب المرحلة. الشروط نفسها لكل فريق تجعل العملية سريعة وعادلة.",
+      q2: "هل علينا الانتقال؟",
+      a2: "لا. البرنامج عن بُعد في الأساس، لكن الأسابيع 7–10 تتضمن إقامة ميدانية في قاعدة زراعية شريكة. تغطي الفرق السفر؛ وجيبي يغطي البرنامج.",
+      q3: "هل التمويل الجماعي مشمول؟",
+      a3: "تحصل شركات الدفعة على توثيق وأسبقية عرض على جيبي كابيتال بعد يوم العرض، لكن يوم العرض هو حدث التمويل الأساسي.",
+      q4: "ما الذي تبحثون عنه؟",
+      a4: "فرق صغيرة (1–4 أفراد) تبني في أي مكان في سلسلة توريد القهوة مع مسار موثوق لتقليل الكربون بشكل قابل للقياس. المرحلة أقل أهمية من السرعة.",
+      applyFooterTitle: "التقديم للدفعة 01 مفتوح",
+      applyFooterD: "آخر موعد للتقديم: 31 ديسمبر 2026. القرار خلال أسبوعين من التقديم.",
+      applyFooterBtn: "ابدأ طلبك"
+    },
+
+    navCombinator: {
+      label: "الكومبيناتور",
+      program: "البرنامج",
+      deal: "الشروط الموحدة",
+      timeline: "الجدول الزمني",
+      demoDay: "يوم العرض",
+      faq: "الأسئلة الشائعة"
     },
 
     common: {
