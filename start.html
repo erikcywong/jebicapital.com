@@ -101,6 +101,11 @@
           <input type="text" class="form-input" name="location" data-i18n-attr="placeholder:start.locationPlaceholder" required>
         </div>
 
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="start.email">Contact Email</span> <span class="req">*</span></label>
+          <input type="email" class="form-input" name="email" data-i18n-attr="placeholder:start.emailPlaceholder" required>
+        </div>
+
         <div class="form-nav">
           <span></span>
           <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)" data-i18n="start.next">Next Step</button>
@@ -197,6 +202,13 @@
           <p style="color:var(--text-2);">We'll review within 3–5 business days.</p>
         </div>
 
+        <div id="submitError" class="hidden" style="text-align:center;padding:40px;background:var(--bg-card);border:1px solid var(--red);border-radius:var(--radius);">
+          <div style="font-size:48px;margin-bottom:12px;">⚠️</div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--red);margin-bottom:8px;" data-i18n="start.errorTitle">Submission failed</h3>
+          <p style="color:var(--text-2);margin-bottom:20px;" data-i18n="start.errorD">Your application was saved locally as backup. Please send it by email directly — the button below opens a prefilled email.</p>
+          <a id="mailtoFallback" class="btn btn-primary" href="#"><span data-i18n="start.errorBtn">Email Application</span></a>
+        </div>
+
         <div class="form-nav" id="reviewNav">
           <button type="button" class="btn btn-outline" onclick="nextStep(4, 3)" data-i18n="start.previous">Previous</button>
           <button type="submit" class="btn btn-primary" data-i18n="start.submit">Submit for Review</button>
@@ -231,7 +243,7 @@
     function nextStep(from, to) {
       // Basic validation for step 1
       if (from === 1) {
-        const required = ['projectName', 'category', 'shortDescription', 'fullDescription', 'location'];
+        const required = ['projectName', 'category', 'shortDescription', 'fullDescription', 'location', 'email'];
         let valid = true;
         required.forEach(name => {
           const input = document.querySelector(`[name="${name}"]`);
@@ -281,6 +293,7 @@
         <div class="review-row"><span class="label" data-i18n="start.projectName">Project Name</span><span class="val">${fd.get('projectName') || '—'}</span></div>
         <div class="review-row"><span class="label" data-i18n="start.category">Project Category</span><span class="val">${catName}</span></div>
         <div class="review-row"><span class="label" data-i18n="start.location">Project Location</span><span class="val">${fd.get('location') || '—'}</span></div>
+        <div class="review-row"><span class="label" data-i18n="start.email">Contact Email</span><span class="val">${fd.get('email') || '—'}</span></div>
         <div class="review-row"><span class="label" data-i18n="start.shortDescription">Short Description</span><span class="val">${fd.get('shortDescription') || '—'}</span></div>
 
         <h3 style="margin-top:20px;" data-i18n="start.step2">Funding & Carbon</h3>
@@ -291,10 +304,105 @@
       `;
     }
 
-    function submitForm() {
+    const SUBMIT_EMAIL = 'erik.wong@napell.bio';
+
+    function collectFormData() {
+      const form = document.getElementById('startForm');
+      const fd = new FormData(form);
+      const rewards = [];
+      form.querySelectorAll('.reward-form-row').forEach(row => {
+        const name = row.querySelector('[name="rewardName[]"]');
+        if (name && name.value.trim()) {
+          rewards.push({
+            name: name.value.trim(),
+            amount: row.querySelector('[name="rewardAmount[]"]').value,
+            description: row.querySelector('[name="rewardDesc[]"]').value,
+            limit: row.querySelector('[name="rewardLimit[]"]').value
+          });
+        }
+      });
+      return {
+        track: fd.get('track'),
+        projectName: fd.get('projectName'),
+        category: fd.get('category'),
+        shortDescription: fd.get('shortDescription'),
+        fullDescription: fd.get('fullDescription'),
+        location: fd.get('location'),
+        email: fd.get('email'),
+        fundingGoal: fd.get('fundingGoal'),
+        duration: fd.get('duration'),
+        carbonReduction: fd.get('carbonReduction'),
+        verificationProvider: fd.get('verificationProvider'),
+        carbonMethod: fd.get('carbonMethod'),
+        rewards: rewards
+      };
+    }
+
+    function saveLocalBackup(data) {
+      try {
+        const arr = JSON.parse(localStorage.getItem('jebi_submissions') || '[]');
+        arr.push({ ...data, _ts: new Date().toISOString() });
+        localStorage.setItem('jebi_submissions', JSON.stringify(arr));
+      } catch (e) { /* storage unavailable — continue */ }
+    }
+
+    function showResult(boxId) {
       document.getElementById('reviewBox').classList.add('hidden');
       document.getElementById('reviewNav').classList.add('hidden');
-      document.getElementById('submitSuccess').classList.remove('hidden');
+      document.getElementById('submitSuccess').classList.add('hidden');
+      document.getElementById('submitError').classList.add('hidden');
+      document.getElementById(boxId).classList.remove('hidden');
+      document.getElementById(boxId).scrollIntoView({ block: 'center' });
+    }
+
+    async function submitForm() {
+      const form = document.getElementById('startForm');
+      const btn = form.querySelector('button[type="submit"]');
+      const data = collectFormData();
+      saveLocalBackup(data);
+
+      btn.disabled = true;
+      const original = btn.textContent;
+      btn.textContent = t('start.sending');
+
+      const trackLabel = data.track === 'crowdfunding' ? t('start.trackCrowd') : t('start.trackAccel');
+      const payload = {
+        _subject: `[JEBI Combinator] ${trackLabel} — ${data.projectName}`,
+        _template: 'table',
+        _captcha: 'false',
+        Track: trackLabel,
+        'Project Name': data.projectName,
+        Category: data.category,
+        'Contact Email': data.email,
+        Location: data.location,
+        'Funding Goal (USD)': data.fundingGoal,
+        'Campaign Duration (days)': data.duration,
+        'Carbon Reduction (t CO2/yr)': data.carbonReduction,
+        'Verification Provider': data.verificationProvider || '—',
+        'Carbon Method': data.carbonMethod,
+        'Short Description': data.shortDescription,
+        'Full Description': data.fullDescription,
+        Rewards: data.rewards.length ? data.rewards.map(r => `${r.name} ($${r.amount || '—'}): ${r.description}`).join(' | ') : '—'
+      };
+
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${SUBMIT_EMAIL}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        showResult('submitSuccess');
+      } catch (e) {
+        const subject = encodeURIComponent(payload._subject);
+        const body = encodeURIComponent(
+          Object.entries(payload).filter(([k]) => !k.startsWith('_')).map(([k, v]) => `${k}: ${v}`).join('\n')
+        );
+        document.getElementById('mailtoFallback').href = `mailto:${SUBMIT_EMAIL}?subject=${subject}&body=${body}`;
+        showResult('submitError');
+        btn.disabled = false;
+        btn.textContent = original;
+      }
     }
 
     applyI18n(getLang());
