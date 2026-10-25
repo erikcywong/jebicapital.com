@@ -28,10 +28,22 @@
             <span class="accent" data-i18n="hero.titleAccent">Zero-Carbon Coffee</span>
           </h1>
           <p class="hero-subtitle" data-i18n="hero.subtitle">From aeroponic cultivation to your morning cup — back projects that eliminate carbon across the entire coffee supply chain. Earn returns. Offset emissions. Change the industry.</p>
+          <form class="hero-search" action="discover.html" method="get">
+            <input type="text" name="q" data-i18n-attr="placeholder:hero.searchPh" placeholder="Search coffee, carbon credits, green bonds…" aria-label="Search">
+            <button type="submit" class="btn btn-primary"><span data-i18n="hero.ctaPrimary">Explore Projects</span></button>
+          </form>
+
+          <div class="cat-pills">
+            <a href="discover.html?category=aeroponic" class="cat-pill">🌱 <span data-i18n="cat.aeroponic">Aeroponic</span></a>
+            <a href="discover.html?category=processing" class="cat-pill">⚙️ <span data-i18n="cat.processing">Processing</span></a>
+            <a href="discover.html?category=roasting" class="cat-pill">🔥 <span data-i18n="cat.roasting">Roasting</span></a>
+            <a href="discover.html?category=distribution" class="cat-pill">🚚 <span data-i18n="cat.distribution">Logistics</span></a>
+            <a href="discover.html?category=cafe" class="cat-pill">☕ <span data-i18n="cat.cafe">Cafés</span></a>
+            <a href="discover.html?category=carbon" class="cat-pill">🌍 <span data-i18n="cat.carbon">Carbon</span></a>
+            <a href="discover.html?category=financial" class="cat-pill">📈 <span data-i18n="cat.financial">Finance</span></a>
+          </div>
+
           <div class="hero-cta">
-            <a href="discover.html" class="btn btn-primary">
-              <span data-i18n="hero.ctaPrimary">Explore Projects</span>
-            </a>
             <a href="start.html" class="btn btn-outline">
               <span data-i18n="hero.ctaSecondary">Start Your Project</span>
             </a>

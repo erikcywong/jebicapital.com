@@ -397,6 +397,20 @@ function getFilteredProjects(opts = {}) {
   if (opts.certs && opts.certs.length > 0) {
     result = result.filter(p => opts.certs.every(c => hasCert(p, c)));
   }
+  if (opts.query) {
+    const q = opts.query.trim().toLowerCase();
+    if (q) {
+      result = result.filter(p => {
+        const haystack = [
+          p.title?.en, p.title?.zh, p.title?.ar,
+          p.desc?.en, p.desc?.zh, p.desc?.ar,
+          p.location?.en, p.location?.zh, p.location?.ar,
+          p.creator
+        ].filter(Boolean).join(' ').toLowerCase();
+        return haystack.includes(q);
+      });
+    }
+  }
   if (opts.sort) {
     switch (opts.sort) {
       case 'trending':   result.sort((a,b) => b.backers - a.backers); break;

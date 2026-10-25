@@ -63,7 +63,8 @@ const I18N = {
       titleAccent: "Zero-Carbon Coffee",
       subtitle: "From aeroponic cultivation to your morning cup — back projects that eliminate carbon across the entire coffee supply chain. Earn returns. Offset emissions. Change the industry.",
       ctaPrimary: "Explore Projects",
-      ctaSecondary: "Start Your Project"
+      ctaSecondary: "Start Your Project",
+      searchPh: "Search coffee, carbon credits, green bonds…"
     },
 
     stats: {
@@ -565,7 +566,8 @@ const I18N = {
       titleAccent: "零碳咖啡",
       subtitle: "从气培种植到你的晨间咖啡——支持在整个咖啡供应链中消除碳排放的项目。获得回报，抵消排放，改变行业。",
       ctaPrimary: "浏览项目",
-      ctaSecondary: "发起项目"
+      ctaSecondary: "发起项目",
+      searchPh: "搜索咖啡、碳信用、绿色债券……"
     },
 
     stats: {
@@ -1067,7 +1069,8 @@ const I18N = {
       titleAccent: "القهوة منخفضة الكربون",
       subtitle: "من الزراعة الهوائية إلى فنجان الصباح — ادعم المشاريع التي تزيل الكربون من سلسلة توريد القهوة بأكملها. اكسب عوائد. عوّض الانبعاثات. غيّر الصناعة.",
       ctaPrimary: "استكشف المشاريع",
-      ctaSecondary: "ابدأ مشروعك"
+      ctaSecondary: "ابدأ مشروعك",
+      searchPh: "ابحث عن القهوة، ائتمانات الكربون، السندات الخضراء…"
     },
 
     stats: {

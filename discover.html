@@ -140,6 +140,10 @@
       };
     }
 
+    function getSearchQuery() {
+      return new URLSearchParams(window.location.search).get('q') || '';
+    }
+
     function getCarbonFilters() {
       const slider = document.getElementById('carbonSlider');
       return {
@@ -161,18 +165,22 @@
         stage: f.stage !== 'all' ? f.stage : null,
         maxCarbon: cf.maxCarbon,
         certs: cf.certs,
+        query: getSearchQuery(),
         sort: f.sort
       });
 
       const grid = document.getElementById('projectsGrid');
       const count = document.getElementById('resultsCount');
 
+      const q = getSearchQuery().trim();
+      const qSuffix = q ? ` · "${q}"` : '';
+
       if (projects.length === 0) {
         grid.innerHTML = `<p style="text-align:center;padding:60px;color:var(--text-2);" data-i18n="discover.noResults">No projects match your filters.</p>`;
-        count.textContent = `0 ${t('discover.results')}`;
+        count.textContent = `0 ${t('discover.results')}${qSuffix}`;
       } else {
         grid.innerHTML = projects.map(renderProjectCard).join('');
-        count.textContent = `${projects.length} ${t('discover.results')}`;
+        count.textContent = `${projects.length} ${t('discover.results')}${qSuffix}`;
       }
     }
 
