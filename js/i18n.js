@@ -315,19 +315,7 @@ const I18N = {
       coffeeFuturesPriceVal: "+$0.45 / lb",
       investNow: "Invest Now",
       learnMore: "Learn More",
-      disclaimer: "All financial products are offered through JEBI Capital's regulated subsidiary. Investments carry risk. Past performance does not guarantee future returns.",
-      launchTitle: "Launch Investment Project",
-      launchSubtitle: "Create a real investment project on the platform — it goes live instantly and appears across the site.",
-      fProduct: "Product",
-      fTitle: "Project title",
-      fTitlePh: "e.g. Solar roastery green bond — 2027",
-      fAmount: "Funding goal (USD)",
-      fCarbon: "Carbon target (t CO₂/yr)",
-      fDesc: "Description",
-      fDescPh: "Describe your investment opportunity…",
-      fEmail: "Contact email",
-      launchSubmit: "Launch Project",
-      launchErr: "Please fill in all required fields (title, goal, valid email)."
+      disclaimer: "All financial products are offered through JEBI Capital's regulated subsidiary. Investments carry risk. Past performance does not guarantee future returns."
     },
 
     about: {
@@ -399,8 +387,7 @@ const I18N = {
       arabic: "العربية",
       arabicSub: "Saudi Arabic",
       continue: "Continue",
-      changeLater: "You can change this anytime in the navigation bar.",
-      close: "Close"
+      changeLater: "You can change this anytime in the navigation bar."
     },
 
     batchBanner: {
@@ -830,19 +817,7 @@ const I18N = {
       coffeeFuturesPriceVal: "+$0.45 / 磅",
       investNow: "立即投资",
       learnMore: "了解更多",
-      disclaimer: "所有金融产品均通过JEBI Capital的受监管子公司提供。投资有风险。过往业绩不代表未来回报。",
-      launchTitle: "发起投资项目",
-      launchSubtitle: "在平台上创建真实的投资项目——即时上线并出现在全站。",
-      fProduct: "产品",
-      fTitle: "项目名称",
-      fTitlePh: "例如：太阳能烘焙厂绿色债券——2027",
-      fAmount: "筹款目标（美元）",
-      fCarbon: "碳减排目标（吨 CO₂/年）",
-      fDesc: "项目描述",
-      fDescPh: "描述你的投资机会……",
-      fEmail: "联系邮箱",
-      launchSubmit: "发布项目",
-      launchErr: "请填写所有必填项（名称、目标金额、有效邮箱）。"
+      disclaimer: "所有金融产品均通过JEBI Capital的受监管子公司提供。投资有风险。过往业绩不代表未来回报。"
     },
 
     about: {
@@ -914,8 +889,7 @@ const I18N = {
       arabic: "العربية",
       arabicSub: "沙特阿拉伯语",
       continue: "继续",
-      changeLater: "你可以随时在导航栏中更改语言设置。",
-      close: "关闭"
+      changeLater: "你可以随时在导航栏中更改语言设置。"
     },
 
     batchBanner: {
@@ -1345,19 +1319,7 @@ const I18N = {
       coffeeFuturesPriceVal: "+$0.45 / رطل",
       investNow: "استثمر الآن",
       learnMore: "اعرف المزيد",
-      disclaimer: "جميع المنتجات المالية تُقدَّم عبر شركة JEBI Capital التابعة المنظمة. الاستثمارات تنطوي على مخاطر. الأداء السابق لا يضمن العوائد المستقبلية.",
-      launchTitle: "إطلاق مشروع استثماري",
-      launchSubtitle: "أنشئ مشروعاً استثمارياً حقيقياً على المنصة — يظهر فوراً في جميع أنحاء الموقع.",
-      fProduct: "المنتج",
-      fTitle: "عنوان المشروع",
-      fTitlePh: "مثال: سند أخضر لمحمصة شمسية — 2027",
-      fAmount: "هدف التمويل (دولار)",
-      fCarbon: "هدف خفض الكربون (طن CO₂/سنة)",
-      fDesc: "وصف المشروع",
-      fDescPh: "صف فرصتك الاستثمارية…",
-      fEmail: "البريد الإلكتروني للتواصل",
-      launchSubmit: "إطلاق المشروع",
-      launchErr: "يرجى ملء جميع الحقول المطلوبة (العنوان، الهدف، بريد إلكتروني صالح)."
+      disclaimer: "جميع المنتجات المالية تُقدَّم عبر شركة JEBI Capital التابعة المنظمة. الاستثمارات تنطوي على مخاطر. الأداء السابق لا يضمن العوائد المستقبلية."
     },
 
     about: {
@@ -1429,8 +1391,7 @@ const I18N = {
       arabic: "العربية",
       arabicSub: "العربية السعودية",
       continue: "متابعة",
-      changeLater: "يمكنك تغيير هذا في أي وقت من شريط التنقل.",
-      close: "إغلاق"
+      changeLater: "يمكنك تغيير هذا في أي وقت من شريط التنقل."
     },
 
     batchBanner: {
