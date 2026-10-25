@@ -90,7 +90,7 @@
           <div class="detail-meta">
             <span>📍 ${location}</span>
             <span>👤 ${p.creator}</span>
-            <span>${cat.icon} ${catName}</span>
+            <span>${catName}</span>
             ${p.verified ? `<span style="color:var(--green);">✓ ${t('project.verificationStatus')}</span>` : `<span style="color:var(--yellow);">⏳ ${t('project.verificationPending')}</span>`}
           </div>
         </div>
@@ -98,7 +98,9 @@
         <div class="detail-layout">
           <div class="detail-main">
             <div class="detail-hero-img">
-              <div class="gradient-overlay" style="background:${p.gradient}"></div>
+              ${p.img
+                ? `<img src="${p.img}" alt="${title}" class="project-photo" style="width:100%;height:100%;object-fit:cover;">`
+                : `<div class="gradient-overlay" style="background:${p.gradient}"></div>`}
             </div>
 
             <div class="detail-stats-bar">

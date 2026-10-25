@@ -6,6 +6,7 @@
 const PROJECTS = [
   {
     id: 'aero-yunnan',
+    img: 'images/aero-yunnan.jpg',
     title: { en: "Aeroponic Coffee Farm — Yunnan Highlands", zh: "气培咖啡农场——云南高原", ar: "مزرعة قهوة هوائية — مرتفعات يونان" },
     desc: { en: "World's largest aeroponic coffee cultivation system, using 95% less water than traditional farming while eliminating soil degradation.", zh: "全球最大的气培咖啡种植系统，用水量比传统种植减少95%，同时消除土壤退化。", ar: "أكبر نظام زراعة قهوة هوائية في العالم، يستخدم مياه أقل بنسبة 95% من الزراعة التقليدية مع القضاء على تدهور التربة." },
     category: 'aeroponic',
@@ -49,6 +50,7 @@ const PROJECTS = [
   },
   {
     id: 'solar-roastery',
+    img: 'images/solar-roastery.jpg',
     title: { en: "Solar-Powered Coffee Roastery — Ethiopia", zh: "太阳能咖啡烘焙厂——埃塞俄比亚", ar: "محمصة قهوة تعمل بالطاقة الشمسية — إثيوبيا" },
     desc: { en: "100% solar-electric roastery replacing diesel roasters, cutting roasting emissions to zero while supporting 200 local farmers.", zh: "100%太阳能电烘焙厂取代柴油烘焙机，将烘焙排放降至零，同时支持200名当地农民。", ar: "محمصة كهربائية بالطاقة الشمسية بنسبة 100% تحل محل محامس الديزل، وتقصل انبعاثات التحميص إلى الصفر بينما تدعم 200 مزارع محلي." },
     category: 'roasting',
@@ -90,6 +92,7 @@ const PROJECTS = [
   },
   {
     id: 'ev-logistics',
+    img: 'images/ev-logistics.jpg',
     title: { en: "EV Coffee Logistics Network — Colombia", zh: "电动车队咖啡物流网络——哥伦比亚", ar: "شبكة لوجستيات القهوة الكهربائية — كولومبيا" },
     desc: { en: "Electric vehicle fleet for last-mile coffee delivery, eliminating 600 tons CO₂/yr across Bogotá and Medellín.", zh: "用于末端咖啡配送的电动车队，每年在波哥大和麦德林消除600吨CO₂。", ar: "أسطول مركبات كهربائية لتوصيل القهوة في الميل الأخير، يزيل 600 طن CO₂/سنة عبر بوغوتا وميديلين." },
     category: 'distribution',
@@ -129,6 +132,7 @@ const PROJECTS = [
   },
   {
     id: 'zero-waste-cafe',
+    img: 'images/zero-waste-cafe.jpg',
     title: { en: "Zero-Waste Café Chain — Saudi Arabia", zh: "零废弃咖啡馆连锁——沙特阿拉伯", ar: "سلسلة مقاهي صفرية النفايات — السعودية" },
     desc: { en: "First zero-waste coffee shop chain in Riyadh using solar power, compostable packaging, and reusable cup ecosystem.", zh: "利雅得首家零废弃咖啡连锁店，使用太阳能、可降解包装和循环杯生态系统。", ar: "أول سلسلة مقاهي صفرية النفايات في الرياض تستخدم الطاقة الشمسية والتغليف القابل للتحلل ونظام الأكواب القابلة لإعادة الاستخدام." },
     category: 'cafe',
@@ -168,6 +172,7 @@ const PROJECTS = [
   },
   {
     id: 'carbon-credits-amazon',
+    img: 'images/carbon-credits-amazon.jpg',
     title: { en: "Amazon Coffee Reforestation — Brazil", zh: "亚马逊咖啡再造林——巴西", ar: "إعادة تشجير القهوة في الأمازون — البرازيل" },
     desc: { en: "Agroforestry coffee project restoring 500 hectares of degraded Amazon land, generating 2,000 tons CO₂ credits annually.", zh: "农林复合咖啡项目恢复500公顷退化的亚马逊土地，每年产生2,000吨CO₂碳信用。", ar: "مشروع قهوة حرجي زراعي يعيد 500 هكتار من أراضي الأمازون المتدهورة، يولد 2,000 طن CO₂ من الائتمانات سنوياً." },
     category: 'carbon',
@@ -209,6 +214,7 @@ const PROJECTS = [
   },
   {
     id: 'blockchain-traceability',
+    img: 'images/blockchain-traceability.jpg',
     title: { en: "Blockchain Coffee Traceability Platform", zh: "区块链咖啡溯源平台", ar: "منصة تتبع القهوة بالبلوكتشين" },
     desc: { en: "End-to-end blockchain tracking from farm to cup, verifying carbon claims and ensuring fair payments to producers.", zh: "从农场到杯子的端到端区块链追踪，验证碳声明并确保向生产者公平付款。", ar: "تتبع بالبلوكتشين من المزرعة إلى الفنجان، للتحقق من ادعاءات الكربون وضمان المدفوعات العادلة للمنتجين." },
     category: 'technology',
@@ -238,6 +244,7 @@ const PROJECTS = [
   },
   {
     id: 'biogas-mill',
+    img: 'images/biogas-mill.jpg',
     title: { en: "Biogas-Powered Coffee Mill — Kenya", zh: "沼气咖啡加工厂——肯尼亚", ar: "معمل قهوة يعمل بالغاز الحيوي — كينيا" },
     desc: { en: "Converting coffee pulp waste into biogas to power wet milling, eliminating diesel and creating circular economy.", zh: "将咖啡果肉废料转化为沼气为湿法加工提供动力，消除柴油使用并创造循环经济。", ar: "تحويل نفايات لب القهوة إلى غاز حيوي لتشغيل الطحن الرطب، والقضاء على الديزل وخلق اقتصاد دائري." },
     category: 'processing',
@@ -277,6 +284,7 @@ const PROJECTS = [
   },
   {
     id: 'green-bond-roastery',
+    img: 'images/green-bond-roastery.jpg',
     title: { en: "Green Bond: Carbon-Negative Roasting Infrastructure", zh: "绿色债券：碳负烘焙基础设施", ar: "سند أخضر: البنية التحتية للتحميص السلبي الكربون" },
     desc: { en: "Green bond financing 10 solar+biogas roasteries across Southeast Asia. 5.8% APR, 5-year maturity, carbon-covenant backed.", zh: "绿色债券为东南亚10家太阳能+沼气烘焙厂融资。5.8%年化，5年期，碳契约担保。", ar: "سند أخضر لتمويل 10 محامص تعمل بالطاقة الشمسية والغاز الحيوي في جنوب شرق آسيا. 5.8% سنوياً، استحقاق 5 سنوات، مدعوم بعهود الكربون." },
     category: 'financial',
@@ -316,6 +324,7 @@ const PROJECTS = [
   },
   {
     id: 'compostable-packaging',
+    img: 'images/compostable-packaging.jpg',
     title: { en: "Compostable Coffee Packaging — Netherlands", zh: "可降解咖啡包装——荷兰", ar: "تغليف قهوة قابل للتحلل — هولندا" },
     desc: { en: "Home-compostable coffee bags made from coffee husk biopolymer, replacing aluminum-foil packaging industry-wide.", zh: "用咖啡果皮生物聚合物制成的家庭可堆肥咖啡袋，替代全行业的铝箔包装。", ar: "أكياس قهوة قابلة للتسميد المنزلي مصنوعة من بوليمر حيوي من قشور القهوة، تحل محل تغليف رقائق الألمنيوم في جميع أنحاء الصناعة." },
     category: 'roasting',
@@ -461,8 +470,10 @@ function renderProjectCard(p) {
   return `
   <a href="project-detail.html?id=${p.id}" class="project-card">
     <div class="project-img">
-      <div class="project-img-gradient" style="background:${p.gradient}"></div>
-      <span class="cat-badge">${cat.icon} ${catName}</span>
+      ${p.img
+        ? `<img src="${p.img}" alt="${title}" loading="lazy" class="project-photo">`
+        : `<div class="project-img-gradient" style="background:${p.gradient}"></div>`}
+      <span class="cat-badge">${catName}</span>
       ${verifiedBadge}
       ${carbonChipHTML(p)}
     </div>

@@ -121,7 +121,7 @@
       container.innerHTML = CATEGORIES.map(cat => `
         <label class="filter-option">
           <input type="radio" name="category" value="${cat.key}">
-          <span>${cat.icon} <span data-i18n="cat.${cat.key}">${t('cat.' + cat.key)}</span></span>
+          <span><span data-i18n="cat.${cat.key}">${t('cat.' + cat.key)}</span></span>
         </label>
       `).join('');
 
