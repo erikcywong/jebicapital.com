@@ -16,6 +16,17 @@ const PROJECTS = [
     backers: 412,
     daysLeft: 18,
     carbonOffset: 450,
+    carbonPassport: {
+      perKg: -0.17,
+      negative: true,
+      renewable: false,
+      stages: [
+        { key: 'cultivation', g: -600 },
+        { key: 'processing', g: 120 },
+        { key: 'roasting', g: 180 },
+        { key: 'logistics', g: 130 }
+      ]
+    },
     verified: true,
     verifier: "Verra",
     stage: 'growth',
@@ -48,6 +59,17 @@ const PROJECTS = [
     backers: 687,
     daysLeft: 5,
     carbonOffset: 320,
+    carbonPassport: {
+      perKg: 1.90,
+      negative: false,
+      renewable: true,
+      stages: [
+        { key: 'cultivation', g: 900 },
+        { key: 'processing', g: 400 },
+        { key: 'roasting', g: 150 },
+        { key: 'logistics', g: 450 }
+      ]
+    },
     verified: true,
     verifier: "Gold Standard",
     stage: 'scaling',
@@ -78,6 +100,17 @@ const PROJECTS = [
     backers: 289,
     daysLeft: 32,
     carbonOffset: 600,
+    carbonPassport: {
+      perKg: 2.60,
+      negative: false,
+      renewable: false,
+      stages: [
+        { key: 'cultivation', g: 1400 },
+        { key: 'processing', g: 600 },
+        { key: 'roasting', g: 500 },
+        { key: 'logistics', g: 100 }
+      ]
+    },
     verified: true,
     verifier: "SCS Global",
     stage: 'seed',
@@ -106,6 +139,17 @@ const PROJECTS = [
     backers: 356,
     daysLeft: 24,
     carbonOffset: 85,
+    carbonPassport: {
+      perKg: 2.90,
+      negative: false,
+      renewable: true,
+      stages: [
+        { key: 'cultivation', g: 1500 },
+        { key: 'processing', g: 700 },
+        { key: 'roasting', g: 400 },
+        { key: 'logistics', g: 300 }
+      ]
+    },
     verified: false,
     verifier: "Verra",
     stage: 'seed',
@@ -134,6 +178,17 @@ const PROJECTS = [
     backers: 543,
     daysLeft: 12,
     carbonOffset: 2000,
+    carbonPassport: {
+      perKg: -0.85,
+      negative: true,
+      renewable: false,
+      stages: [
+        { key: 'cultivation', g: -1800 },
+        { key: 'processing', g: 350 },
+        { key: 'roasting', g: 250 },
+        { key: 'logistics', g: 350 }
+      ]
+    },
     verified: true,
     verifier: "Verra",
     stage: 'scaling',
@@ -164,6 +219,7 @@ const PROJECTS = [
     backers: 198,
     daysLeft: 41,
     carbonOffset: 0,
+    carbonPassport: null,
     verified: true,
     verifier: "Gold Standard",
     stage: 'growth',
@@ -192,6 +248,17 @@ const PROJECTS = [
     backers: 234,
     daysLeft: 28,
     carbonOffset: 180,
+    carbonPassport: {
+      perKg: 1.40,
+      negative: false,
+      renewable: true,
+      stages: [
+        { key: 'cultivation', g: 700 },
+        { key: 'processing', g: 350 },
+        { key: 'roasting', g: 250 },
+        { key: 'logistics', g: 100 }
+      ]
+    },
     verified: true,
     verifier: "Gold Standard",
     stage: 'growth',
@@ -220,6 +287,17 @@ const PROJECTS = [
     backers: 87,
     daysLeft: 60,
     carbonOffset: 1500,
+    carbonPassport: {
+      perKg: 0.95,
+      negative: false,
+      renewable: true,
+      stages: [
+        { key: 'cultivation', g: 500 },
+        { key: 'processing', g: 200 },
+        { key: 'roasting', g: 120 },
+        { key: 'logistics', g: 130 }
+      ]
+    },
     verified: true,
     verifier: "Verra",
     stage: 'scaling',
@@ -248,6 +326,17 @@ const PROJECTS = [
     backers: 512,
     daysLeft: 3,
     carbonOffset: 120,
+    carbonPassport: {
+      perKg: 0.60,
+      negative: false,
+      renewable: false,
+      stages: [
+        { key: 'cultivation', g: 300 },
+        { key: 'processing', g: 150 },
+        { key: 'roasting', g: 80 },
+        { key: 'logistics', g: 70 }
+      ]
+    },
     verified: true,
     verifier: "SCS Global",
     stage: 'scaling',
@@ -302,15 +391,47 @@ function getFilteredProjects(opts = {}) {
   if (opts.stage) {
     result = result.filter(p => p.stage === opts.stage);
   }
+  if (opts.maxCarbon != null) {
+    result = result.filter(p => p.carbonPassport && p.carbonPassport.perKg <= opts.maxCarbon);
+  }
+  if (opts.certs && opts.certs.length > 0) {
+    result = result.filter(p => opts.certs.every(c => hasCert(p, c)));
+  }
   if (opts.sort) {
     switch (opts.sort) {
       case 'trending':   result.sort((a,b) => b.backers - a.backers); break;
       case 'endingSoon': result.sort((a,b) => a.daysLeft - b.daysLeft); break;
       case 'mostFunded': result.sort((a,b) => b.pledged - a.pledged); break;
       case 'newest':     result.sort((a,b) => b.id.localeCompare(a.id)); break;
+      case 'lowestCarbon': result.sort((a,b) => passportKg(a) - passportKg(b)); break;
     }
   }
   return result;
+}
+
+/* ---------- Carbon Passport helpers ---------- */
+function passportKg(p) {
+  return p.carbonPassport ? p.carbonPassport.perKg : Infinity;
+}
+
+function hasCert(p, cert) {
+  switch (cert) {
+    case 'carbon':   return !!p.verified;
+    case 'negative': return !!(p.carbonPassport && p.carbonPassport.negative);
+    case 'renewable': return !!(p.carbonPassport && p.carbonPassport.renewable);
+    default: return false;
+  }
+}
+
+function carbonChipHTML(p) {
+  if (!p.carbonPassport) return '';
+  const cp = p.carbonPassport;
+  const val = cp.perKg.toFixed(2);
+  if (cp.negative) {
+    return `<span class="carbon-chip neg" title="${t('project.carbonNegativeBadge')}">⬇ ${val} kg CO₂e/kg</span>`;
+  }
+  const cls = cp.perKg <= 1.0 ? ' good' : '';
+  return `<span class="carbon-chip${cls}" title="${t('project.footprintPerKg')}">${val} kg CO₂e/kg</span>`;
 }
 
 function renderProjectCard(p) {
@@ -329,6 +450,7 @@ function renderProjectCard(p) {
       <div class="project-img-gradient" style="background:${p.gradient}"></div>
       <span class="cat-badge">${cat.icon} ${catName}</span>
       ${verifiedBadge}
+      ${carbonChipHTML(p)}
     </div>
     <div class="project-body">
       <h3 class="project-title">${title}</h3>

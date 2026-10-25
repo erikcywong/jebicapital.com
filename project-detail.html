@@ -164,6 +164,9 @@
               ${p.verified ? `<div class="carbon-equiv">✓ ${t('project.verifiedBy')}: ${p.verifier}</div>` : `<div class="carbon-equiv" style="color:var(--yellow);">⏳ ${t('project.verificationPending')}</div>`}
             </div>
 
+            <!-- Carbon Passport card -->
+            ${passportCardHTML(p)}
+
             <!-- Progress card -->
             <div class="sidebar-card">
               <div style="margin-bottom:16px;">
@@ -188,6 +191,49 @@
       `;
 
       applyI18n(getLang());
+    }
+
+    function passportCardHTML(p) {
+      if (!p.carbonPassport) {
+        return `
+          <div class="sidebar-card carbon-card">
+            <h3 style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:8px;">🛂 <span data-i18n="project.passportTitle">Carbon Passport™</span></h3>
+            <div style="font-size:13px;color:var(--text-2);padding:12px 0;" data-i18n="project.serviceNoPassport">Platform service — product footprint not applicable.</div>
+          </div>`;
+      }
+      const cp = p.carbonPassport;
+      const maxAbs = Math.max(...cp.stages.map(s => Math.abs(s.g)));
+      const negBadge = cp.negative ? `<span class="cert-badge neg">⬇ ${t('project.carbonNegativeBadge')}</span>` : '';
+      const certBadges = [
+        p.verified ? `<span class="cert-badge">✓ ${t('project.verificationStatus')}</span>` : '',
+        cp.renewable ? `<span class="cert-badge">⚡ ${t('discover.certRenewable')}</span>` : ''
+      ].join('');
+      const stageBars = cp.stages.map(s => {
+        const w = Math.max(Math.round(Math.abs(s.g) / maxAbs * 100), 4);
+        const isNeg = s.g < 0;
+        return `
+          <div class="stage-row">
+            <div class="stage-label">${t('project.stage' + s.key.charAt(0).toUpperCase() + s.key.slice(1))}</div>
+            <div class="stage-bar-track">
+              <div class="stage-bar${isNeg ? ' neg' : ''}" style="width:${w}%"></div>
+            </div>
+            <div class="stage-val${isNeg ? ' neg' : ''}">${isNeg ? '−' : ''}${Math.abs(s.g)}g</div>
+          </div>`;
+      }).join('');
+      const total = cp.perKg;
+      const totalColor = total < 0 ? 'var(--green)' : (total <= 1 ? 'var(--accent)' : 'var(--yellow)');
+      return `
+        <div class="sidebar-card carbon-card">
+          <h3 style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:8px;">🛂 <span data-i18n="project.passportTitle">Carbon Passport™</span> ${negBadge}</h3>
+          <div class="carbon-num" style="color:${totalColor};">${total < 0 ? '−' : ''}${Math.abs(total).toFixed(2)}</div>
+          <div class="carbon-label" data-i18n="project.footprintPerKg">kg CO₂e per kg coffee</div>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+            <div style="font-size:12px;font-weight:700;color:var(--text-2);margin-bottom:10px;" data-i18n="project.lifecycleTitle">Lifecycle breakdown</div>
+            ${stageBars}
+          </div>
+          <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;">${certBadges}</div>
+          <div style="margin-top:12px;font-size:11px;color:var(--text-3);line-height:1.5;" data-i18n="project.passportMethodology">ISO 14067 methodology · cradle-to-cup · third-party verified</div>
+        </div>`;
     }
 
     function switchTab(e, tabName) {

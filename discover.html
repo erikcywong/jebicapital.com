@@ -42,6 +42,25 @@
       </div>
 
       <div class="filter-group">
+        <div class="filter-title" data-i18n="discover.passportFilter">Carbon Passport™</div>
+        <label class="filter-option" style="flex-direction:column;align-items:stretch;gap:8px;">
+          <span style="display:flex;justify-content:space-between;">
+            <span data-i18n="discover.maxFootprint">Max footprint</span>
+            <span id="carbonSliderVal" style="font-weight:700;color:var(--accent);">≤ 3.0 kg</span>
+          </span>
+          <input type="range" id="carbonSlider" min="0" max="30" value="30" step="1" style="width:100%;" oninput="applyFilters()">
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" id="certNegative">
+          <span data-i18n="discover.certNegative">Carbon negative only</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" id="certRenewable">
+          <span data-i18n="discover.certRenewable">100% renewable energy</span>
+        </label>
+      </div>
+
+      <div class="filter-group">
         <div class="filter-title" data-i18n="discover.fundingStage">Funding Stage</div>
         <label class="filter-option">
           <input type="radio" name="stage" value="all" checked>
@@ -77,6 +96,7 @@
             <option value="endingSoon" data-i18n="discover.endingSoon">Ending Soon</option>
             <option value="mostFunded" data-i18n="discover.mostFunded">Most Funded</option>
             <option value="newest" data-i18n="discover.newest">Newest</option>
+            <option value="lowestCarbon" data-i18n="discover.lowestCarbon">Lowest Carbon</option>
           </select>
         </div>
       </div>
@@ -120,12 +140,27 @@
       };
     }
 
+    function getCarbonFilters() {
+      const slider = document.getElementById('carbonSlider');
+      return {
+        maxCarbon: slider.value < 30 ? slider.value / 10 : null,
+        certs: [
+          document.getElementById('certNegative').checked ? 'negative' : null,
+          document.getElementById('certRenewable').checked ? 'renewable' : null
+        ].filter(Boolean)
+      };
+    }
+
     function applyFilters() {
       const f = getFilters();
+      const cf = getCarbonFilters();
+      document.getElementById('carbonSliderVal').textContent = `≤ ${(document.getElementById('carbonSlider').value / 10).toFixed(1)} kg`;
       const projects = getFilteredProjects({
         category: f.category !== 'all' ? f.category : null,
         carbonImpact: f.carbonImpact !== 'all' ? f.carbonImpact : null,
         stage: f.stage !== 'all' ? f.stage : null,
+        maxCarbon: cf.maxCarbon,
+        certs: cf.certs,
         sort: f.sort
       });
 
@@ -145,6 +180,9 @@
       document.querySelector('input[name="category"][value="all"]').checked = true;
       document.querySelector('input[name="carbonImpact"][value="all"]').checked = true;
       document.querySelector('input[name="stage"][value="all"]').checked = true;
+      document.getElementById('carbonSlider').value = 30;
+      document.getElementById('certNegative').checked = false;
+      document.getElementById('certRenewable').checked = false;
       applyFilters();
     }
 

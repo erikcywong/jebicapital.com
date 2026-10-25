@@ -115,7 +115,12 @@ const I18N = {
       high: "High (500+ t CO₂)",
       seed: "Seed",
       growth: "Growth",
-      scaling: "Scaling"
+      scaling: "Scaling",
+      passportFilter: "Carbon Passport™",
+      maxFootprint: "Max footprint",
+      certNegative: "Carbon negative only",
+      certRenewable: "100% renewable energy",
+      lowestCarbon: "Lowest Carbon"
     },
 
     project: {
@@ -162,7 +167,17 @@ const I18N = {
       verificationStatus: "Carbon Verified",
       verificationPending: "Verification Pending",
       equityOffered: "Equity Offered",
-      minInvestment: "Min. Investment"
+      minInvestment: "Min. Investment",
+      passportTitle: "Carbon Passport™",
+      footprintPerKg: "kg CO₂e per kg coffee",
+      lifecycleTitle: "Lifecycle breakdown",
+      stageCultivation: "Cultivation",
+      stageProcessing: "Processing",
+      stageRoasting: "Roasting",
+      stageLogistics: "Logistics & Retail",
+      carbonNegativeBadge: "Carbon Negative",
+      passportMethodology: "ISO 14067 methodology · cradle-to-cup · third-party verified",
+      serviceNoPassport: "Platform service — product footprint not applicable."
     },
 
     start: {
@@ -602,7 +617,12 @@ const I18N = {
       high: "高（500吨以上 CO₂）",
       seed: "种子期",
       growth: "成长期",
-      scaling: "扩张期"
+      scaling: "扩张期",
+      passportFilter: "碳护照™",
+      maxFootprint: "碳足迹上限",
+      certNegative: "仅看碳负性",
+      certRenewable: "100% 可再生能源",
+      lowestCarbon: "碳足迹最低"
     },
 
     project: {
@@ -649,7 +669,17 @@ const I18N = {
       verificationStatus: "碳已核证",
       verificationPending: "核证进行中",
       equityOffered: "出让股权",
-      minInvestment: "最低投资额"
+      minInvestment: "最低投资额",
+      passportTitle: "碳护照™",
+      footprintPerKg: "公斤 CO₂e / 每公斤咖啡",
+      lifecycleTitle: "生命周期拆解",
+      stageCultivation: "种植",
+      stageProcessing: "加工",
+      stageRoasting: "烘焙",
+      stageLogistics: "物流与零售",
+      carbonNegativeBadge: "碳负性",
+      passportMethodology: "ISO 14067 方法学 · 从摇篮到杯 · 第三方核证",
+      serviceNoPassport: "平台服务——不适用产品碳足迹。"
     },
 
     start: {
@@ -1089,7 +1119,12 @@ const I18N = {
       high: "عالي (+500 طن CO₂)",
       seed: "البذور",
       growth: "النمو",
-      scaling: "التوسع"
+      scaling: "التوسع",
+      passportFilter: "جواز الكربون™",
+      maxFootprint: "أقصى بصمة كربونية",
+      certNegative: "سالب الكربون فقط",
+      certRenewable: "طاقة متجددة 100%",
+      lowestCarbon: "أقل كربوناً"
     },
 
     project: {
@@ -1136,7 +1171,17 @@ const I18N = {
       verificationStatus: "الكربون موثق",
       verificationPending: "التحقق قيد التقدم",
       equityOffered: "الأسهم المقدمة",
-      minInvestment: "الحد الأدنى للاستثمار"
+      minInvestment: "الحد الأدنى للاستثمار",
+      passportTitle: "جواز الكربون™",
+      footprintPerKg: "كغ CO₂e لكل كغ قهوة",
+      lifecycleTitle: "تفصيل دورة الحياة",
+      stageCultivation: "الزراعة",
+      stageProcessing: "المعالجة",
+      stageRoasting: "التحميص",
+      stageLogistics: "الخدمات والتجزئة",
+      carbonNegativeBadge: "سالب الكربون",
+      passportMethodology: "منهجية ISO 14067 · من المهد إلى الكوب · موثق من طرف ثالث",
+      serviceNoPassport: "خدمة منصة — لا تنطبق بصمة المنتج."
     },
 
     start: {
