@@ -29,8 +29,8 @@
         <div class="fin-product-aside">
           <div class="price-label" data-i18n="financial.carbonCreditsPrice">Avg. Price</div>
           <div class="price-val" data-i18n="financial.carbonCreditsPriceVal">$18.50 / ton CO₂</div>
-          <a href="#" class="btn btn-primary" data-i18n="financial.investNow">Invest Now</a>
-          <a href="#" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
+          <a href="#" class="btn btn-primary" data-i18n="financial.investNow" onclick="openInvestModal('carbon-credits');return false;">Invest Now</a>
+          <a href="how-it-works.html" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
         </div>
       </div>
 
@@ -46,8 +46,8 @@
         <div class="fin-product-aside">
           <div class="price-label" data-i18n="financial.greenBondsPrice">Avg. Yield</div>
           <div class="price-val" data-i18n="financial.greenBondsPriceVal">5.8% APR</div>
-          <a href="#" class="btn btn-primary" data-i18n="financial.investNow">Invest Now</a>
-          <a href="#" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
+          <a href="#" class="btn btn-primary" data-i18n="financial.investNow" onclick="openInvestModal('green-bonds');return false;">Invest Now</a>
+          <a href="how-it-works.html" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
         </div>
       </div>
 
@@ -63,8 +63,8 @@
         <div class="fin-product-aside">
           <div class="price-label" data-i18n="financial.impactFundsPrice">Historical Return</div>
           <div class="price-val" data-i18n="financial.impactFundsPriceVal">12.4% / year</div>
-          <a href="#" class="btn btn-primary" data-i18n="financial.investNow">Invest Now</a>
-          <a href="#" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
+          <a href="#" class="btn btn-primary" data-i18n="financial.investNow" onclick="openInvestModal('impact-funds');return false;">Invest Now</a>
+          <a href="how-it-works.html" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
         </div>
       </div>
 
@@ -80,8 +80,8 @@
         <div class="fin-product-aside">
           <div class="price-label" data-i18n="financial.coffeeFuturesPrice">Carbon Premium</div>
           <div class="price-val" data-i18n="financial.coffeeFuturesPriceVal">+$0.45 / lb</div>
-          <a href="#" class="btn btn-primary" data-i18n="financial.investNow">Invest Now</a>
-          <a href="#" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
+          <a href="#" class="btn btn-primary" data-i18n="financial.investNow" onclick="openInvestModal('coffee-futures');return false;">Invest Now</a>
+          <a href="how-it-works.html" class="btn btn-outline" style="margin-top:8px;height:44px;font-size:14px;" data-i18n="financial.learnMore">Learn More</a>
         </div>
       </div>
 
@@ -90,12 +90,121 @@
     <div class="fin-disclaimer" data-i18n="financial.disclaimer">All financial products are offered through JEBI Capital's regulated subsidiary. Investments carry risk. Past performance does not guarantee future returns.</div>
   </div>
 
+  <!-- Invest / Launch Project Modal -->
+  <div class="modal-overlay" id="investModal" onclick="if(event.target===this)closeInvestModal()">
+    <div class="modal-box" style="max-width:560px;width:92%;text-align:start;">
+      <h2 class="modal-title" data-i18n="financial.launchTitle">Launch Investment Project</h2>
+      <p class="modal-subtitle" data-i18n="financial.launchSubtitle">Create a real investment project on the platform — it goes live instantly and appears across the site.</p>
+
+      <div class="form-group" style="margin-bottom:16px;">
+        <label class="form-label" data-i18n="financial.fProduct">Product</label>
+        <input type="text" class="form-input" id="invProduct" readonly>
+      </div>
+      <div class="form-group" style="margin-bottom:16px;">
+        <label class="form-label"><span data-i18n="financial.fTitle">Project title</span> <span class="req">*</span></label>
+        <input type="text" class="form-input" id="invTitle" data-i18n-attr="placeholder:financial.fTitlePh" placeholder="e.g. Solar roastery green bond — 2027">
+      </div>
+      <div class="form-row" style="margin-bottom:16px;">
+        <div class="form-group">
+          <label class="form-label"><span data-i18n="financial.fAmount">Funding goal (USD)</span> <span class="req">*</span></label>
+          <input type="number" class="form-input" id="invAmount" min="100" placeholder="50,000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="financial.fCarbon">Carbon target (t CO₂/yr)</label>
+          <input type="number" class="form-input" id="invCarbon" min="0" placeholder="150">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:16px;">
+        <label class="form-label" data-i18n="financial.fDesc">Description</label>
+        <textarea class="form-textarea" id="invDesc" style="min-height:90px;" data-i18n-attr="placeholder:financial.fDescPh" placeholder="Describe your investment opportunity…"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:8px;">
+        <label class="form-label"><span data-i18n="financial.fEmail">Contact email</span> <span class="req">*</span></label>
+        <input type="email" class="form-input" id="invEmail" placeholder="you@company.com">
+      </div>
+      <p class="form-error" id="invError" data-i18n="financial.launchErr">Please fill in all required fields.</p>
+
+      <div style="display:flex;gap:12px;margin-top:20px;">
+        <button class="btn btn-primary" style="flex:1;height:48px;" onclick="submitInvest()" data-i18n="financial.launchSubmit">Launch Project</button>
+        <button class="btn btn-outline" style="height:48px;padding:0 24px;" onclick="closeInvestModal()" data-i18n="modal.close">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/i18n.js"></script>
   <script src="js/data.js"></script>
   <script src="js/shared.js"></script>
   <script>
     initShared({ isIndex: false });
     applyI18n(getLang());
+
+    const FIN_META = {
+      'carbon-credits': { productKey: 'financial.carbonCreditsTitle', category: 'carbon', verifier: 'Verra', gradient: 'linear-gradient(135deg, #00ba7c, #2e7d32)' },
+      'green-bonds':    { productKey: 'financial.greenBondsTitle',   category: 'financial', verifier: 'Verra', gradient: 'linear-gradient(135deg, #1d9bf0, #00ba7c)' },
+      'impact-funds':   { productKey: 'financial.impactFundsTitle',  category: 'financial', verifier: 'Gold Standard', gradient: 'linear-gradient(135deg, #9c27b0, #1d9bf0)' },
+      'coffee-futures': { productKey: 'financial.coffeeFuturesTitle', category: 'financial', verifier: 'SCS Global', gradient: 'linear-gradient(135deg, #ff7a00, #ffc107)' }
+    };
+
+    let investProduct = null;
+
+    function openInvestModal(productId) {
+      investProduct = productId;
+      const meta = FIN_META[productId];
+      document.getElementById('invProduct').value = t(meta.productKey);
+      document.getElementById('invError').classList.remove('show');
+      document.getElementById('investModal').classList.add('active');
+      applyI18n(getLang());
+      document.getElementById('invProduct').value = t(meta.productKey);
+    }
+
+    function closeInvestModal() {
+      document.getElementById('investModal').classList.remove('active');
+    }
+
+    function submitInvest() {
+      const title = document.getElementById('invTitle').value.trim();
+      const amount = parseFloat(document.getElementById('invAmount').value);
+      const carbon = parseFloat(document.getElementById('invCarbon').value) || 0;
+      const desc = document.getElementById('invDesc').value.trim();
+      const email = document.getElementById('invEmail').value.trim();
+
+      if (!title || !amount || amount <= 0 || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('invError').classList.add('show');
+        return;
+      }
+
+      const meta = FIN_META[investProduct];
+      const lang = getLang();
+      const storyText = desc || t('financial.launchSubtitle');
+      const project = {
+        id: 'user-' + Date.now().toString(36),
+        title: { en: title, zh: title, ar: title },
+        desc: { en: storyText, zh: storyText, ar: storyText },
+        category: meta.category,
+        location: { en: '', zh: '', ar: '' },
+        creator: email,
+        goal: Math.round(amount),
+        pledged: 0,
+        backers: 0,
+        daysLeft: 60,
+        carbonOffset: Math.round(carbon),
+        verified: false,
+        verifier: meta.verifier,
+        stage: 'seed',
+        gradient: meta.gradient,
+        rewards: [],
+        story: { en: `<p>${storyText}</p>`, zh: `<p>${storyText}</p>`, ar: `<p>${storyText}</p>` },
+        updates: [],
+        equity: null,
+        userCreated: true
+      };
+
+      saveUserProject(project);
+      window.location.href = 'project-detail.html?id=' + project.id;
+    }
+
+    // ESC closes modal
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeInvestModal(); });
   </script>
 </body>
 </html>

@@ -355,6 +355,27 @@ const PROJECTS = [
   }
 ];
 
+/* ---------- User-created projects (localStorage) ---------- */
+const USER_PROJECTS_KEY = 'jebi_user_projects';
+
+function loadUserProjects() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(USER_PROJECTS_KEY) || '[]');
+    saved.forEach(p => { if (p && p.id && !getProjectById(p.id)) PROJECTS.push(p); });
+  } catch (e) { /* corrupted storage — ignore */ }
+}
+
+function saveUserProject(p) {
+  try {
+    const arr = JSON.parse(localStorage.getItem(USER_PROJECTS_KEY) || '[]');
+    arr.push(p);
+    localStorage.setItem(USER_PROJECTS_KEY, JSON.stringify(arr));
+  } catch (e) { /* storage unavailable — session-only */ }
+  PROJECTS.push(p);
+}
+
+loadUserProjects();
+
 /* ---------- Helpers ---------- */
 function getProjectById(id) {
   return PROJECTS.find(p => p.id === id);
